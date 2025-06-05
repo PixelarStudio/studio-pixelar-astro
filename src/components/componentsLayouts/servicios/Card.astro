@@ -1,0 +1,22 @@
+---
+
+import {getCollection} from 'astro:content';
+const planes = await getCollection('planes');
+
+---
+
+
+
+
+<section class="flex flex-block relative bg-black text-white mx-auto px-8 py-8 text-center text-2xl" >
+<h1>Componente de Prueba CARD</h1>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+  {planes.map((plan) => (
+    <Card {...plan.data} />
+  ))}
+</div>
+
+
+</section>
+</div>

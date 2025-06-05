@@ -1,0 +1,22 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+type PlanEntry = CollectionEntry<"planes">;
+type plan = {
+  plan: PlanEntry;
+};
+const { plan }: plan = Astro.props;
+
+export async function getStaticPaths() {
+  const planes = await getCollection("planes");
+
+  return planes.map((plan: PlanEntry) => ({
+    params: { slug: plan.id },
+    props: { plan },
+  }));
+}
+
+
+if (!plan || !plan.id) {
+  throw new Error("No está el Slug disponible");
+}
+---

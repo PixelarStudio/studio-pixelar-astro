@@ -1,0 +1,508 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { ClientRouter } from "astro:transitions";
+import "../../styles/global.css";
+import { getCollection } from "astro:content";
+import DetailItem from "../../components/componentsLayouts/servicios/detailPlan/DetailItem.astro";
+import HeroPlan from "../../components/componentsLayouts/servicios/HeroPlan.astro";
+
+// Tipado correcto
+import type { CollectionEntry } from "astro:content";
+type Plan = CollectionEntry<"planes">;
+
+const { plan }: { plan: Plan } = Astro.props;
+
+const {
+  title,
+  imagen,
+  subtitle,
+  description,
+  price,
+  secciones,
+  certificadoSSL,
+  correoCorporativo,
+  extras = [],
+  tecnologias = [],
+  disponible,
+  cta,
+  tiempoEntrega,
+  publico,
+  documentacion,
+  formasPago = [],
+  integraciones = [],
+  idioma,
+  factura,
+} = plan.data;
+
+// getStaticPaths usando .id (no .slug)
+
+export const prerender = true;
+export const getStaticPaths = async () => {
+  const planes = await getCollection("planes");
+  return planes.map((plan: Plan) => ({
+    params: { id: plan.id }, // 👈 CORRECTO
+    props: { plan },
+  }));
+};
+
+
+
+// Variables para control de visibilidad
+const hasExtras = extras.length > 0;
+const hasTecnologias = tecnologias.length > 0;
+const hasIntegraciones = integraciones.length > 0;
+const hasFormasPago = formasPago.length > 0;
+
+
+import SeccionesIcon from "../../components/componentsLayouts/ui/svg/SeccionesIcon.astro" ;
+import SeguridadIcon from '../../components/componentsLayouts/ui/svg/SeguridadIcon.astro';
+import SslIcon from '../../components/componentsLayouts/ui/svg/SslIcon.astro';
+import CorreosIcon from '../../components/componentsLayouts/ui/svg/CorreosIcon.astro';
+import EntregaIcon from '../../components/componentsLayouts/ui/svg/EntregaIcon.astro';
+import DocumentacionIcon from '../../components/componentsLayouts/ui/svg/DocumentacionIcon.astro';
+import PublicoIcon from '../../components/componentsLayouts/ui/svg/PublicoIcon.astro';
+import IdiomaIcon from "../../components/componentsLayouts/ui/svg/IdiomaIcon.astro";
+import FacturaIcon from '../../components/componentsLayouts/ui/svg/FacturaIcon.astro';
+---
+
+<BaseLayout title={title}>
+  <ClientRouter />
+
+  <section
+    class="relative py-8 md:py-16 px-4 bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden mt-16 md:mt-20"
+  >
+    <!-- Fondo con efecto de textura mejorado -->
+    <div
+      class="absolute inset-0 opacity-[0.08] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwMCA4MDAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMwMDAwMDAiLz48ZyBvcGFjaXR5PSIwLjEiPjxwYXRoIGQ9Ik03NDggNDE2Yy0yMSAxMy40LTUxLjggMTMuNi03MyAwLTIxLjItMTMuNS00Ni45LTIxLjQtNzMtMjYuNy0yOC42LTYuOS01OC45LTguNi04Ni4zLTE0LjQtMjguMi02LjEtNTEuMy0xNi42LTcwLjQtMzAtMjAtMTMuOC0zNC4zLTI5LjQtNDcuNS00NS42LTEzLjYtMTYuNi0yNi4yLTMzLjQtNDYtNDItMTkuNC04LjYtNDUuOC05LjctNjYgMC0yMC4zIDkuNy0zMi4zIDI1LjQtNDYgNDItMTMuMiAxNi4yLTI3LjUgMzEuOC00Ny41IDQ1LjYtMjAuMSAxMy44LTQyLjIgMjMuOS03MC40IDMwLTI3LjQgNS44LTU3LjcgNy41LTg2LjMgMTQuNC0yNi4xIDUuMy01MS44IDEzLjItNzMgMjYuNy0yMS4yIDEzLjQtNTEuOCAxMy42LTczIDBDMy40IDQwMi42LTIuNyAzODQgMi4zIDM2My4zIDcuMiAzNDIuMiAyMSAzMjQgMzguOCAzMDkuOGMxOC43LTE0LjggNDAuNC0yNS4yIDYyLjUtMzUuNiAyMS4yLTEwIDQxLjMtMjAuOSA1OC4xLTM0LjMgMTYuOC0xMy40IDI5LjItMjkuNCA0MC40LTQ1LjggMTEuNi0xNi45IDIxLjQtMzMuOCAzNS45LTQ3LjIgMTQuNi0xMy40IDMzLjgtMjMuNCA1NC4yLTI2LjcgMjAuNC0zLjMgNDEuNiAwLjMgNTkuNCA4LjcgMTcuMyA4LjIgMzAuMiAyMC4yIDQzLjUgMzIuMiAxMy44IDEyLjMgMjcuMiAyNC4zIDQ1IDMwLjcgMTcuNCA2LjIgMzguNCA2LjIgNTUuOCAwIDE2LjYtNi40IDMxLjItMTguNCA0NS0zMC43IDEzLjQtMTIuMyAyNi4yLTI0LjMgNDMuNS0zMi4yIDE3LjgtOC40IDM5LTExLjkgNTkuNC04LjcgMjAuNCAzLjMgMzkuNiAxMy4zIDU0LjIgMjYuNyAxNC41IDEzLjQgMjQuMyAzMC4zIDM1LjkgNDcuMiAxMS4yIDE2LjQgMjMuNiAzMi40IDQwLjQgNDUuOCAxNi44IDEzLjQgMzYuOSAyNC4zIDU4LjEgMzQuMyAyMi4xIDEwLjQgNDMuOCAyMC44IDYyLjUgMzUuNiAxNy44IDE0LjIgMzEuNiAzMi40IDM2LjUgNTMuMSA1IDIwLjctMS4xIDM5LjMtMTIuNiA1MS43eiIgZmlsbD0iIzAwZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==')]"
+    >
+    </div>
+
+    <div class="relative max-w-7xl mx-auto space-y-8">
+      <!-- Botón volver -->
+      <a
+        href="/servicios"
+        class="inline-flex items-center gap-2 text-blue-300 hover:text-blue-400 transition-all group"
+      >
+        <svg
+          class="w-5 h-5 group-hover:-translate-x-1 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        <span class="text-sm font-medium">Volver a planes</span>
+      </a>
+
+      <HeroPlan title={title} subtitle={subtitle} imagen={imagen} />
+
+      <!-- Contenido principal en 2 columnas -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Columna izquierda: Información principal -->
+        <div class="lg:col-span-2 space-y-8">
+          <!-- Descripción -->
+          <div
+            class="bg-gray-800/50 backdrop-blur-lg rounded-xl p-6 md:p-8 border border-gray-700"
+          >
+            <p class="text-gray-300 text-lg">{description}</p>
+          </div>
+
+          <!-- Precio y CTA destacado -->
+          <div
+            class="bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-lg rounded-xl p-6 md:p-8 border border-blue-500/30"
+          >
+            <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+              {
+                disponible && cta ? (
+                  <a
+                    href={cta}
+                    class="inline-block py-3 px-8 font-bold text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg transition-all hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 text-lg"
+                  >
+                    <span class="inline-flex items-center gap-2">
+                      Contratar ahora
+                      <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </span>
+                  </a>
+                ) : (
+                  <div class="inline-block py-3 px-8 font-bold text-white bg-gradient-to-r from-red-600 to-red-800 rounded-lg transition-all hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 text-lg">
+                    <span class="inline-flex items-center gap-2">
+                      No disponible
+                    </span>
+                  </div>
+                )
+              }
+
+              <div>
+                <div class="text-4xl md:text-5xl font-bold text-white">
+                  <span class="text-xl">Precio desde:</span> $ {
+                    price.toLocaleString("es-AR")
+                  }
+                </div>
+                {
+                  !disponible && (
+                    <div class="mt-1 text-sm text-yellow-300">
+                      Este servicio no se encuentra disponible en este momento.
+                    </div>
+                  )
+                }
+              </div>
+            </div>
+
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 gap-4 mx-auto sm:grid-1"
+            >
+            </div>
+          </div>
+
+          <!-- Ventajas exclusivas -->
+          {
+            hasExtras && (
+              <div class="bg-gray-800/50 backdrop-blur-lg rounded-xl p-6 md:p-8 border border-gray-700">
+                <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                  <svg
+                    class="w-6 h-6 text-green-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  Que incluye el plan? ...
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {extras.map((extra: string, index: number) => (
+                    <div class="flex items-start gap-3 p-4 bg-gray-700/20 rounded-lg">
+                      <svg
+                        class="w-5 h-5 text-green-400 flex-shrink-0 mt-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span class="text-gray-200">{extra}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+
+          <!-- Tecnologías -->
+          {
+            hasTecnologias && (
+              <div class="bg-gray-800/50 backdrop-blur-lg rounded-xl p-6 md:p-8 border border-gray-700">
+                <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                  <svg
+                    class="w-6 h-6 text-purple-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M7 20l10-10m0 0L7 10l10 10"
+                    />
+                  </svg>
+                  Tecnologías utilizadas
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                  {tecnologias.map((tech:string, index:number) => (
+                    <div class="px-5 py-3 bg-gray-700/40 rounded-lg border border-gray-600 text-gray-200 font-medium">
+                      {tech}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+        </div>
+
+        
+
+        <!-- Columna derecha: Detalles técnicos -->
+        <div class="space-y-8">
+          <!-- Detalles técnicos -->
+          <div
+            class="bg-gray-800/50 backdrop-blur-lg rounded-xl p-6 md:p-8 border border-gray-700 sticky top-6"
+          >
+            <h3
+              class="text-2xl font-bold text-white mb-6 flex items-center gap-3"
+            >
+              <svg
+                class="w-6 h-6 text-blue-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              Detalles técnicos
+            </h3>
+            <ul class="space-y-4">
+              {
+                secciones > 0 && (
+                  <DetailItem
+                    icon={SeccionesIcon}
+                    label="Secciones"
+                    value={secciones}
+                  />
+                )
+              }
+              {
+                certificadoSSL && (
+                  <DetailItem
+                    icon={SslIcon}
+                    label="Seguridad"
+                    value="SSL Incluido"
+                  />
+                )
+              }
+              {
+                correoCorporativo > 0 && (
+                  <DetailItem
+                    icon={CorreosIcon}
+                    label="Correos"
+                    value={correoCorporativo}
+                  />
+                )
+              }
+              {
+                tiempoEntrega && (
+                  <DetailItem
+                    icon={EntregaIcon}
+                    label="Entrega"
+                    value={tiempoEntrega}
+                  />
+                )
+              }
+              {
+                documentacion && (
+                  <DetailItem
+                    icon={DocumentacionIcon }
+                    label="Documentación"
+                    value="Completa"
+                  />
+                )
+              }
+              {
+                publico && (
+                  <DetailItem icon={PublicoIcon} label="Público" value={publico} />
+                )
+              }
+              {
+                idioma && (
+                  <DetailItem icon={IdiomaIcon } label="Idioma" value={idioma} />
+                )
+              }
+              {
+                factura && (
+                  <DetailItem
+                    icon={FacturaIcon }
+                    label="Factura"
+                    value="Incluida"
+                  />
+                )
+              }
+            </ul>
+          </div>
+
+          <!-- Integraciones -->
+          {
+            hasIntegraciones && (
+              <div class="bg-gray-800/50 backdrop-blur-lg rounded-xl p-6 md:p-8 border border-gray-700">
+                <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                  <svg
+                    class="w-6 h-6 text-green-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                    />
+                  </svg>
+                  Integraciones
+                </h3>
+                <ul class="space-y-3">
+                  {integraciones.map((item:string, index:number) => (
+                    <li class="flex items-center gap-2 text-gray-300">
+                      <svg
+                        class="w-4 h-4 text-green-400 flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+
+          <!-- Formas de pago -->
+          {
+            hasFormasPago && (
+              <div class="bg-gray-800/50 backdrop-blur-lg rounded-xl p-6 md:p-8 border border-gray-700">
+                <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                  <svg
+                    class="w-6 h-6 text-yellow-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  Formas de pago
+                </h3>
+                <ul class="space-y-3">
+                  {formasPago.map((pago:string, index:number) => (
+                    <li class="text-gray-300 flex items-center gap-2">
+                      <svg
+                        class="w-4 h-4 text-yellow-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      {pago}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+        </div>
+      </div>
+
+      <!-- Soporte premium -->
+      <div
+        class="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-lg rounded-xl p-8 border border-blue-500/30 mt-8"
+      >
+        <div class="flex flex-col md:flex-row items-center gap-6">
+          <div
+            class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0"
+          >
+            <i class="fas fa-headset text-blue-300 text-2xl"></i>
+          </div>
+          <div class="text-center md:text-left">
+            <h3 class="text-2xl font-bold text-white mb-2">
+              Soporte Premium Incluido
+            </h3>
+            <p class="text-blue-200">
+              Asistencia técnica 24/7 durante los primeros 5 meses para resolver
+              cualquier inconveniente o realizar ajustes necesarios.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  /* Sistema de diseño mejorado */
+  :root {
+    --primary: #3b82f6;
+    --secondary: #8b5cf6;
+    --dark: #1e293b;
+  }
+
+  body {
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+  }
+
+  .bento-module {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .bento-module:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease both;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .lg\:col-span-2,
+    .lg\:col-span-1 {
+      grid-column: span 1 !important;
+    }
+  }
+</style>

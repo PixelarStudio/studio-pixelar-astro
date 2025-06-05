@@ -1,11 +1,658 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import NavBar from "../components/componentsLayouts/header/navbar/NavBar.jsx";
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+import Footer from "../components/componentsLayouts/Footer.jsx";
+import ParticlesBackground from "../components/particles/ParticlesBackground";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+// Configuración SEO
+const pageTitle = "Studio Pixelar | Soluciones Web que Generan Negocios";
+const pageDescription = "Desarrollamos webs estratégicas que convierten visitantes en clientes. Diseño web profesional, e-commerce y marketing digital.";
+const canonicalUrl = "https://studiopixelar.com";
+const ogImage = "/social-share.jpg";
+const GA_MEASUREMENT_ID = "G-XXXXXXXXXX"; // Reemplazar con tu ID real
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="es">
+  <head>
+    <!-- Metadatos básicos (OBLIGATORIOS) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO esencial -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Open Graph (Redes sociales) -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="es_ES" />
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@studiopixelar" />
+    <meta name="twitter:creator" content="@studiopixelar" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- Favicon (Identidad visual) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <!-- Web App Manifest (PWA) -->
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+    
+    <!-- Google Analytics (Medición de tráfico) -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${GA_MEASUREMENT_ID}');
+    </script>
+    
+    <!-- Preconexiones (Optimización de rendimiento) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Fuentes externas -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    
+    <ClientRouter />
+  </head>
+
+  <body
+    class="bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden"
+  >
+    <NavBar client:load />
+
+    <!-- HERO SECTION - Rediseñada para mayor impacto -->
+    <section
+      class="relative min-h-[90vh] flex items-center justify-center px-6"
+    >
+    <ParticlesBackground client:load/>
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent"
+      >
+      </div>
+      <div class="relative max-w-4xl text-center space-y-8 z-10">
+        <div class="animate-fade-in">
+          <h1
+            class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+          >
+            <span class="gradient-text">Transformamos Visiones</span><br />
+            <span class="text-white">en Éxitos Digitales</span>
+          </h1>
+          <p
+            class="text-xl md:text-2xl text-gray-200 font-light max-w-3xl mx-auto"
+          >
+            Creamos <span class="font-semibold text-blue-400"
+              >soluciones web a medida</span
+            > que
+            <span class="font-semibold text-purple-400"
+              >aumentan tus ventas</span
+            >,
+            <span class="font-semibold text-pink-400"
+              >mejoran tu visibilidad online</span
+            > y
+            <span class="font-semibold text-cyan-400"
+              >atraen nuevos clientes</span
+            >.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up"
+        >
+          <a
+            href="/servicios"
+            class="relative group bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/20"
+          >
+            <span class="relative z-10">Descubre Nuestros Servicios</span>
+            <div
+              class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-600 to-purple-600"
+            >
+            </div>
+          </a>
+          <a
+            href="/contacto"
+            class="relative group bg-transparent border-2 border-blue-400 hover:bg-blue-900/30 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
+          >
+            <span class="relative z-10">Consulta Gratuita</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS CLAVE - Enfocados en resultados -->
+    <section class="py-20 px-6 bg-gradient-to-b from-gray-800/50 to-gray-900">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+           ¿Qué lográs con
+  <span class="text-blue-400"
+              >Studio Pixelar?</span
+            > ?
+          </h2>
+          <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+Un sitio web a tu medida: diseño único, velocidad garantizada y soporte permanente.
+
+
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="feature-card p-8 rounded-2xl bg-gray-800/30 backdrop-blur-lg border border-gray-700 hover:border-blue-500 transition-all"
+          >
+            <div
+              class="w-14 h-14 mb-6 bg-blue-500/10 rounded-xl flex items-center justify-center"
+            >
+              <svg
+                class="w-8 h-8 text-blue-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4"> Diseño centrado en tu marca</h3>
+            <p class="text-gray-400 leading-relaxed">
+Creamos interfaces personalizadas que reflejan tu identidad y guían a tus clientes con claridad en cada clic.
+
+
+
+            </p>
+          </div>
+
+          <div
+            class="feature-card p-8 rounded-2xl bg-gray-800/30 backdrop-blur-lg border border-gray-700 hover:border-purple-500 transition-all"
+          >
+            <div
+              class="w-14 h-14 mb-6 bg-purple-500/10 rounded-xl flex items-center justify-center"
+            >
+              <svg
+                class="w-8 h-8 text-purple-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Velocidad y usabilidad impecables</h3>
+            <p class="text-gray-400 leading-relaxed">
+Reducimos tiempos de carga y optimizamos cada elemento para que tu web funcione ágil y sin interrupciones en celulares, tabletas y computadoras.
+
+          </div>
+
+          <div
+            class="feature-card p-8 rounded-2xl bg-gray-800/30 backdrop-blur-lg border border-gray-700 hover:border-pink-500 transition-all"
+          >
+            <div
+              class="w-14 h-14 mb-6 bg-pink-500/10 rounded-xl flex items-center justify-center"
+            >
+              <svg
+                class="w-8 h-8 text-pink-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Soporte activo y crecimiento continuo</h3>
+            <p class="text-gray-400 leading-relaxed">
+Mantenemos tu sitio siempre actualizado, resolvemos imprevistos de inmediato y preparamos tu web para incorporar nuevas funcionalidades cuando las necesites.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- CTA FINAL - Enfocado en conversión -->
+    <section
+      class="py-20 px-6 bg-gradient-to-r from-blue-900/10 to-purple-900/50"
+    >
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          ¿Listo para <span class="text-blue-300">transformar</span> tu presencia
+          digital?
+        </h2>
+        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          Agenda una consulta gratuita y recibe un diagnóstico personalizado de
+          tu proyecto
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contacto"
+            class="inline-block relative group bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-full font-bold text-lg transition-transform hover:scale-105 shadow-xl hover:shadow-blue-500/20"
+          >
+            <span class="relative z-10">Quiero mi consulta gratuita</span>
+            <div
+              class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-r from-blue-600 to-purple-700"
+            >
+            </div>
+          </a>
+          <a
+            href="https://api.whatsapp.com/send/?phone=541124025510"
+            target="_blank"
+            class="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 px-8 py-4 rounded-full font-bold text-lg transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              ></path>
+            </svg>
+            Chat directo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    
+<Footer client:load />
+  </body>
+  
+  
+  
+  
+  
+  <style>
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-card {
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fade-in 1s ease-out;
+    }
+
+    @keyframes slide-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-slide-up {
+      animation: slide-up 0.8s ease-out 0.2s forwards;
+    }
+  </style>
+</html>
+
+<script>
+
+
+</script>
+
+<!-- ---
+import "../styles/global.css";
+import NavBar from "../components/componentsLayouts/header/navbar/NavBar.jsx";
+import { ClientRouter } from "astro:transitions";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio Pixelar | Diseño y Desarrollo Web</title>
+    <ClientRouter />
+  </head>
+
+  <body
+    class="bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden"
+  >
+    <NavBar client:load />
+
+    <!-- stats - count particles -->
+
+<!-- HERO SECTION --
+    <section
+      class="relative min-h-[90vh] flex items-center justify-center px-6"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent"
+      >
+      </div>
+      <div class="relative max-w-4xl text-center space-y-8 z-10">
+        <div class="animate-fade-in">
+          <h1
+            class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent leading-tight"
+          >
+            Transformación Digital<br class="hidden md:block" /> con Diseño Inteligente
+          </h1>
+          <p
+            class="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mx-auto"
+          >
+            Creamos experiencias web que combinan innovación tecnológica con
+            diseño estratégico
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up"
+        >
+          <a
+            href="/servicios"
+            class="relative group bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/20"
+          >
+            <span class="relative z-10">Explorar Servicios</span>
+            <div
+              class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-600 to-purple-600"
+            >
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES GRID --
+    <section
+      class="py-20 px-6 bg-gradient-to-b from-gray-800/50 to-gray-900 mask-t-from-0.5"
+    >
+      <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+        <div
+          class="feature-card p-8 rounded-2xl bg-gray-800/30 backdrop-blur-lg border border-gray-700 hover:border-blue-500 transition-all"
+        >
+          <div
+            class="w-14 h-14 mb-6 bg-blue-500/10 rounded-xl flex items-center justify-center"
+          >
+            <svg
+              class="w-8 h-8 text-blue-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Rendimiento Extremo</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Sitios optimizados con carga ultrarrápida y tecnología de última
+            generación
+          </p>
+        </div>
+
+        <div
+          class="feature-card p-8 rounded-2xl bg-gray-800/30 backdrop-blur-lg border border-gray-700 hover:border-purple-500 transition-all"
+        >
+          <div
+            class="w-14 h-14 mb-6 bg-purple-500/10 rounded-xl flex items-center justify-center"
+          >
+            <svg
+              class="w-8 h-8 text-purple-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Diseño Adaptativo</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Experiencias fluidas que se adaptan perfectamente a cualquier
+            dispositivo
+          </p>
+        </div>
+
+        <div
+          class="feature-card p-8 rounded-2xl bg-gray-800/30 backdrop-blur-lg border border-gray-700 hover:border-pink-500 transition-all"
+        >
+          <div
+            class="w-14 h-14 mb-6 bg-pink-500/10 rounded-xl flex items-center justify-center"
+          >
+            <svg
+              class="w-8 h-8 text-pink-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">SEO Avanzado</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Optimización técnica para máxima visibilidad en motores de búsqueda
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SHOWCASE --
+    <section class="py-20 px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+          <h2
+            class="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent"
+          >
+            Nuestros Servicios
+          </h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            Soluciones digitales personalizadas para cada etapa de tu negocio
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12">
+          <div
+            class="service-card group relative p-8 rounded-3xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-blue-500 transition-all"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+            </div>
+            <h3 class="text-3xl font-bold mb-6">Diseño Web Premium</h3>
+            <p class="text-gray-400 mb-8 leading-relaxed">
+              Interfaces intuitivas con enfoque en conversión y experiencia de
+              usuario
+            </p>
+            <ul class="space-y-4 text-gray-300">
+              <li class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>Diseño
+                Responsivo
+              </li>
+              <li class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>Optimización
+                SEO
+              </li>
+              <li class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>CMS
+                Personalizado
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="service-card group relative p-8 rounded-3xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-purple-500 transition-all"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+            </div>
+            <h3 class="text-3xl font-bold mb-6">E-Commerce</h3>
+            <p class="text-gray-400 mb-8 leading-relaxed">
+              Tiendas online de alto rendimiento con integraciones avanzadas
+            </p>
+            <ul class="space-y-4 text-gray-300">
+              <li class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-purple-500 rounded-full"></div>Pasarelas
+                de Pago
+              </li>
+              <li class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-purple-500 rounded-full"></div>Gestión de
+                Inventario
+              </li>
+              <li class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-purple-500 rounded-full"></div>Analítica
+                Avanzada
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION --
+    <section class="py-20 px-6 bg-gradient-to-r from-gray-800 to-gray-900">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-8">
+          ¿Listo para Transformar tu Presencia Digital?
+        </h2>
+        <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+          Programemos una consulta estratégica para desarrollar la solución
+          perfecta para tu negocio
+        </p>
+        <a
+          href="/contacto"
+          class="inline-block relative group bg-gradient-to-r from-blue-500 to-purple-600 px-12 py-4 rounded-full font-bold text-lg transition-transform hover:scale-105 shadow-xl hover:shadow-blue-500/20"
+        >
+          <span class="relative z-10">Iniciar Proyecto</span>
+          <div
+            class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-r from-blue-600 to-purple-700"
+          >
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="py-12 border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-6 text-center text-gray-400">
+        <div class="mb-8">
+          <a
+            href="/"
+            class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent"
+            >Studio Pixelar</a
+          >
+        </div>
+        <p class="text-sm">
+          © {new Date().getFullYear()} Todos los derechos reservados. Diseñado con
+          ♥ en Buenos Aires
+        </p>
+      </div>
+    </footer>
+  </body>
+  
+  <style>
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .service-card {
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fade-in 1s ease-out;
+    }
+
+    @keyframes slide-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-slide-up {
+      animation: slide-up 0.8s ease-out 0.2s forwards;
+    }
+
+  </style>
+</html> -->

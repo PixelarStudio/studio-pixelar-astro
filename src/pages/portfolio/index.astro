@@ -1,0 +1,275 @@
+---
+import ProjectCard from "../../components/portfolio/ProjectCard.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+type ProyectoEntry = CollectionEntry<"portfolio">;
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/global.css";
+import ParticlesBackground from "../../components/particles/ParticlesBackground";
+
+const proyectos: ProyectoEntry[] = await getCollection("portfolio");
+
+// Ordenar proyectos por fecha (más recientes primero)
+const proyectosOrdenados = [...proyectos].sort(
+  (a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime()
+);
+
+// Extraer lista única de categorías (para validar que existan en frontmatter)
+const categoriasUnicas = Array.from(
+  new Set(proyectosOrdenados.map((p) => p.data.categoria || "Sin categoría"))
+);
+---
+<BaseLayout title="Portafolio | Mis Proyectos">
+  <div
+    class="portfolio-page bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden min-h-screen mt-20"
+  >
+    <!-- Hero Section -->
+    <section
+      class="portfolio-hero py-20 md:py-28 px-4 text-center relative overflow-hidden"
+    >
+      <ParticlesBackground client:load />
+      <div
+        class="absolute inset-0 opacity-5 bg-[url('https://assets.website-files.com/5e51b3b0337309d672efd94c/5e51ccb1d7d69c3a0a3d8683_noise.png')]"
+      ></div>
+      <div class="max-w-4xl mx-auto relative">
+        <h1
+          class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent"
+        >
+          Nuestro Portafolio
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
+          Descubre los proyectos en los que hemos trabajado, cada uno con su
+          propia historia de desafíos y soluciones innovadoras.
+        </p>
+      </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="py-16 px-4">
+      <div class="max-w-7xl mx-auto">
+        <!-- Filtros -->
+        <div
+          class="portfolio-filter rounded-xl p-4 mb-12 border border-gray-700/50"
+        >
+          <div class="flex flex-wrap justify-between items-center gap-4">
+            <div>
+              <h2 class="text-xl font-bold text-white">Filtrar proyectos</h2>
+              <p class="text-gray-400 text-sm">
+                Se encontraron {proyectos.length} proyectos
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <!-- Botón "Todos" -->
+              <button
+                class="filtro-btn px-5 py-2 bg-blue-600 text-white rounded-full font-medium"
+                data-categoria="Todos"
+              >
+                Todos
+              </button>
+              <!-- Los demás botones, uno por categoría existente -->
+              {categoriasUnicas.map((cat) => (
+                <button
+                  class="filtro-btn px-5 py-2 bg-gray-800 hover:bg-gray-700 rounded-full font-medium transition-colors"
+                  data-categoria={cat}
+                  key={cat}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-grid">
+          {proyectosOrdenados.map((proyecto) => (
+            <!-- Cada proyecto envuelto en un <div> con data-categoria -->
+            <div
+              class="proyecto-item"
+              data-categoria={proyecto.data.categoria || "Sin categoría"}
+              key={proyecto.slug}
+            >
+              <ProjectCard proyecto={proyecto} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="portfolio-cta py-20 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+          ¿Listo para comenzar tu proyecto?
+        </h2>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+          Transformemos tu idea en una solución digital impactante. Trabajemos
+          juntos para crear algo extraordinario.
+        </p>
+        <a
+          href="/contacto"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all text-lg"
+        >
+          Contactar ahora
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- SCRIPT PARA FILTRAR EN EL CLIENTE -->
+  <script type="module">
+    // Esperar a que cargue el DOM
+    document.addEventListener("DOMContentLoaded", () => {
+      // Selecciono todos los botones de filtro
+      const botonesFiltro = document.querySelectorAll(".filtro-btn");
+      // Selecciono cada contenedor de proyecto
+      const itemsProyecto = document.querySelectorAll(".proyecto-item");
+
+      // Función que aplica el filtro según categoría
+      function aplicarFiltro(categoriaSeleccionada) {
+        itemsProyecto.forEach((item) => {
+          const catItem = item.getAttribute("data-categoria");
+          // Si "Todos" o coincide la categoría, muestro; si no, oculto
+          if (
+            categoriaSeleccionada === "Todos" ||
+            catItem === categoriaSeleccionada
+          ) {
+            item.style.display = ""; // vuelve al display por defecto del grid
+          } else {
+            item.style.display = "none"; // oculta el elemento
+          }
+        });
+      }
+
+      // Por defecto, activo el botón "Todos" y muestro todo
+      botonesFiltro.forEach((btn) => {
+        if (btn.getAttribute("data-categoria") === "Todos") {
+          btn.classList.add("bg-blue-600", "text-white");
+        }
+      });
+      aplicarFiltro("Todos");
+
+      // Agrego listener a cada botón
+      botonesFiltro.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Quito estado "activo" de todos
+          botonesFiltro.forEach((b) => {
+            b.classList.remove("bg-blue-600", "text-white");
+            b.classList.add("bg-gray-800", "text-gray-300");
+          });
+          // Agrego estado "activo" al clickeado
+          btn.classList.add("bg-blue-600", "text-white");
+          btn.classList.remove("bg-gray-800", "text-gray-300");
+          // Leo su categoría
+          const categoria = btn.getAttribute("data-categoria");
+          aplicarFiltro(categoria);
+        });
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style is:global>
+  .portfolio-page {
+    --primary: 15, 23, 42;
+    --secondary: 30, 41, 59;
+    --accent: 59, 130, 246;
+    --light: 241, 245, 249;
+  }
+
+  .portfolio-hero {
+    background: linear-gradient(
+      135deg,
+      rgba(var(--primary), 0.9) 0%,
+      rgba(var(--secondary), 0.9) 100%
+    );
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+  }
+
+  .portfolio-filter {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+  }
+
+  .portfolio-cta {
+    background: linear-gradient(
+      135deg,
+      rgba(var(--accent), 0.1) 0%,
+      rgba(79, 70, 229, 0.1) 100%
+    );
+  }
+
+  /* Opcional: cambiar el cursor al pasar sobre los botones */
+  .filtro-btn {
+    cursor: pointer;
+  }
+</style>
+
+
+  <!-- Script de filtrado -->
+  <script is:inline type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const botonesFiltro = document.querySelectorAll(".filtro-btn");
+    const itemsProyecto = document.querySelectorAll(".proyecto-item");
+
+    function aplicarFiltro(categoriaSeleccionada) {
+      itemsProyecto.forEach((item) => {
+        const catItem = item.getAttribute("data-categoria");
+        if (
+          categoriaSeleccionada === "Todos" ||
+          catItem === categoriaSeleccionada
+        ) {
+          item.style.display = "";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+
+    // Activo "Todos" por defecto
+    botonesFiltro.forEach((btn) => {
+      if (btn.getAttribute("data-categoria") === "Todos") {
+        btn.classList.add("bg-blue-600", "text-white");
+      }
+    });
+    aplicarFiltro("Todos");
+
+    // Cada vez que se clickea un botón, cambio estilos y re-aplico filtro
+    botonesFiltro.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        botonesFiltro.forEach((b) => {
+          b.classList.remove("bg-blue-600", "text-white");
+          b.classList.add("bg-gray-800", "text-gray-300");
+        });
+        btn.classList.add("bg-blue-600", "text-white");
+        btn.classList.remove("bg-gray-800", "text-gray-300");
+        const categoria = btn.getAttribute("data-categoria");
+        aplicarFiltro(categoria);
+      });
+    });
+  });
+</script>

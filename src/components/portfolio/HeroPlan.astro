@@ -1,0 +1,21 @@
+---
+// src/components/HeroPlan.astro
+const { title, subtitle, imagen } = Astro.props;
+---
+
+<div class="flex flex-col md:flex-row gap-8 items-center">
+  <div class="md:w-1/2 space-y-4">
+    <h1 class="text-4xl md:text-5xl font-bold text-white">{title}</h1>
+    <p class="text-xl text-blue-400">{subtitle}</p>
+  </div>
+  <div class="md:w-1/2">
+    <div class="aspect-video rounded-xl overflow-hidden shadow-2xl border border-gray-700">
+      <img 
+        src={imagen} 
+        alt={title} 
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+    </div>
+  </div>
+</div>

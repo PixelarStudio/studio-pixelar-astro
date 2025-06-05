@@ -1,0 +1,55 @@
+---
+import NavBar from "../components/layouts/navbar/NavBar.jsx";
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css"
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Pixelar Studio | Diseño y Desarrollo Web</title>
+		<ClientRouter />
+
+	</head>
+	<main class="bg-gradient-to-r from-red-500 via-black to-blue-600 dark:from-blue-800 mt-30">
+		<NavBar client:load/>
+
+		<slot />
+<main class="min-h-screen">
+    <div class="grid grid-cols-5 grid-rows-5 gap-4">
+        <div class="col-start-2 row-start-2">2</div>
+    <div class="col-start-3 row-start-2 bg-white">3</div>
+    <div class="col-start-4 row-start-2">4</div>
+    <div class="col-start-4 row-start-3">5</div>
+    <div class="col-start-3 row-start-3">6</div>
+    <div class="col-start-2 row-start-3">7</div>
+    <div class="col-start-2 row-start-4">8</div>
+    <div class="col-start-3 row-start-4">9</div>
+    <div class="col-start-4 row-start-4">10</div>
+    <div class="col-span-3 col-start-2 row-start-1">11</div>
+    <div class="col-span-3 col-start-2 row-start-5">12</div>
+    <div class="col-start-5 row-start-1">13</div>
+    <div class="col-start-1 row-start-1">14</div>
+</div>
+
+</main>
+
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+

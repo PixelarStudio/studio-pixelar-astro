@@ -1,0 +1,91 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const planes = await getCollection("planes");
+import ParticlesBackground from "../../components/particles/ParticlesBackground";
+
+interface Props {
+  plan: string,
+  data: string,
+  id: string,
+  
+}
+
+import "../../styles/global.css";
+---
+
+<BaseLayout title="Servicios | Un servicio para cada necesidad">
+  
+  <section class="relative py-28 px-6 bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden mt-20">
+    <!-- Efecto de fondo decorativo -->
+    <div class="absolute inset-0 pointer-events-none z-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #ffffff05 0, #ffffff05 1px, transparent 1px, transparent 20px);"></div>
+    
+    
+    <div class="relative max-w-7xl mx-auto ">
+      <ParticlesBackground client:load/>
+      <div class="text-center mb-20">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent">
+          Nuestros Servicios
+        </h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          Soluciones técnicas adaptadas a cada necesidad con transparencia y profesionalismo
+        </p>
+      </div>
+
+      {planes.length > 0 ? (
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 h-auto">
+          {planes.map((plan) => (
+            <article class="group relative p-8 rounded-3xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
+              <!-- Efecto de brillo al hover -->
+              <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-r from-blue-500/10 to-transparent"></div>
+              
+              <!-- Contenido de la tarjeta -->
+              <div class="relative z-10">
+                <div class="w-16 h-16 mb-6 bg-blue-500/10 rounded-xl flex items-center justify-center">
+                  <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-100 mb-4">{plan.data.title}</h3>
+                <p class="text-gray-400 mb-6 leading-relaxed descripcion">{plan.data.description}</p>
+                
+                <div class="flex items-baseline mb-8">
+                  <span class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent">
+                    ${plan.data.price.toLocaleString("es-AR")}
+                  </span>
+                  {plan.data.frequency && <span class="text-gray-400 ml-2">/{plan.data.frequency}</span>}
+                </div>
+
+                <a
+                  href={`/planes/${plan.id}`}
+                  class="inline-flex items-center justify-center w-full px-6 py-3 font-medium text-white transition-all duration-200 bg-gray-700 rounded-lg hover:bg-gradient-to-r from-blue-500 to-purple-600 hover:shadow-lg hover:shadow-blue-500/20"
+                >
+                  Detalles del Plan
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center p-12 rounded-xl bg-gray-800/50 backdrop-blur-lg">
+          <p class="text-xl text-gray-400">Próximamente nuevos planes personalizados</p>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+
+<style>
+
+  .descripcion {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>

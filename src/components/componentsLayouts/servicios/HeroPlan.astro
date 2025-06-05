@@ -1,0 +1,25 @@
+---
+const { title, subtitle, imagen } = Astro.props;
+
+---
+
+
+
+      <!-- Hero con imagen al 100% y título/subtítulo -->
+      
+      
+      <div class="relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl">
+        <img 
+          src={imagen} 
+          alt={`Imagen destacada para ${title}`} 
+          class="w-full h-64 md:h-96 object-cover mask-b-from-lime-950"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent flex items-end p-6 md:p-10">
+          <div>
+            <h1 class="text-3xl md:text-5xl font-bold text-white mb-2">{title}</h1>
+            {subtitle && <p class="text-xl md:text-2xl text-blue-200 font-light">{subtitle}</p>}
+          </div>
+        </div>
+      </div>
