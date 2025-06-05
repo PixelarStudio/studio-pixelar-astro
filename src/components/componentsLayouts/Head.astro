@@ -54,16 +54,7 @@ const GA_MEASUREMENT_ID = "G-XXXXXXXXXX"; // Reemplazar con tu ID real
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#000000" />
     
-    <!-- Google Analytics (Solución sin errores TypeScript) -->
-    <script is:inline>
-      // @ts-nocheck
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${GA_MEASUREMENT_ID}');
-    </script>
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
-    
+   
     <!-- Preconexiones (Optimización de rendimiento) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

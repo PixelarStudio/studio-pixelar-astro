@@ -51,15 +51,7 @@ const GA_MEASUREMENT_ID = "G-XXXXXXXXXX"; // Reemplazar con tu ID real
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#000000" />
     
-    <!-- Google Analytics (Medición de tráfico) -->
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${GA_MEASUREMENT_ID}');
-    </script>
-    
+
     <!-- Preconexiones (Optimización de rendimiento) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -295,6 +287,9 @@ Mantenemos tu sitio siempre actualizado, resolvemos imprevistos de inmediato y p
   
   
   
+</html>
+
+
   <style>
     .feature-card {
       transition: all 0.3s ease;
@@ -344,12 +339,6 @@ Mantenemos tu sitio siempre actualizado, resolvemos imprevistos de inmediato y p
       animation: slide-up 0.8s ease-out 0.2s forwards;
     }
   </style>
-</html>
-
-<script>
-
-
-</script>
 
 <!-- ---
 import "../styles/global.css";

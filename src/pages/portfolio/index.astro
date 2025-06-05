@@ -72,7 +72,6 @@ const categoriasUnicas = Array.from(
                 <button
                   class="filtro-btn px-5 py-2 bg-gray-800 hover:bg-gray-700 rounded-full font-medium transition-colors"
                   data-categoria={cat}
-                  key={cat}
                 >
                   {cat}
                 </button>
@@ -87,7 +86,6 @@ const categoriasUnicas = Array.from(
             <div
               class="proyecto-item"
               data-categoria={proyecto.data.categoria || "Sin categoría"}
-              key={proyecto.slug}
             >
               <ProjectCard proyecto={proyecto} />
             </div>
@@ -128,58 +126,7 @@ const categoriasUnicas = Array.from(
       </div>
     </section>
   </div>
-
-  <!-- SCRIPT PARA FILTRAR EN EL CLIENTE -->
-  <script type="module">
-    // Esperar a que cargue el DOM
-    document.addEventListener("DOMContentLoaded", () => {
-      // Selecciono todos los botones de filtro
-      const botonesFiltro = document.querySelectorAll(".filtro-btn");
-      // Selecciono cada contenedor de proyecto
-      const itemsProyecto = document.querySelectorAll(".proyecto-item");
-
-      // Función que aplica el filtro según categoría
-      function aplicarFiltro(categoriaSeleccionada) {
-        itemsProyecto.forEach((item) => {
-          const catItem = item.getAttribute("data-categoria");
-          // Si "Todos" o coincide la categoría, muestro; si no, oculto
-          if (
-            categoriaSeleccionada === "Todos" ||
-            catItem === categoriaSeleccionada
-          ) {
-            item.style.display = ""; // vuelve al display por defecto del grid
-          } else {
-            item.style.display = "none"; // oculta el elemento
-          }
-        });
-      }
-
-      // Por defecto, activo el botón "Todos" y muestro todo
-      botonesFiltro.forEach((btn) => {
-        if (btn.getAttribute("data-categoria") === "Todos") {
-          btn.classList.add("bg-blue-600", "text-white");
-        }
-      });
-      aplicarFiltro("Todos");
-
-      // Agrego listener a cada botón
-      botonesFiltro.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          // Quito estado "activo" de todos
-          botonesFiltro.forEach((b) => {
-            b.classList.remove("bg-blue-600", "text-white");
-            b.classList.add("bg-gray-800", "text-gray-300");
-          });
-          // Agrego estado "activo" al clickeado
-          btn.classList.add("bg-blue-600", "text-white");
-          btn.classList.remove("bg-gray-800", "text-gray-300");
-          // Leo su categoría
-          const categoria = btn.getAttribute("data-categoria");
-          aplicarFiltro(categoria);
-        });
-      });
-    });
-  </script>
+  
 </BaseLayout>
 
 <style is:global>
@@ -232,6 +179,55 @@ const categoriasUnicas = Array.from(
 
   <!-- Script de filtrado -->
   <script is:inline type="module">
+     // Esperar a que cargue el DOM
+    document.addEventListener("DOMContentLoaded", () => {
+      // Selecciono todos los botones de filtro
+      const botonesFiltro = document.querySelectorAll(".filtro-btn");
+      // Selecciono cada contenedor de proyecto
+      const itemsProyecto = document.querySelectorAll(".proyecto-item");
+
+      // Función que aplica el filtro según categoría
+      function aplicarFiltro(categoriaSeleccionada) {
+        itemsProyecto.forEach((item) => {
+          const catItem = item.getAttribute("data-categoria");
+          // Si "Todos" o coincide la categoría, muestro; si no, oculto
+          if (
+            categoriaSeleccionada === "Todos" ||
+            catItem === categoriaSeleccionada
+          ) {
+            item.style.display = ""; // vuelve al display por defecto del grid
+          } else {
+            item.style.display = "none"; // oculta el elemento
+          }
+        });
+      }
+
+      // Por defecto, activo el botón "Todos" y muestro todo
+      botonesFiltro.forEach((btn) => {
+        if (btn.getAttribute("data-categoria") === "Todos") {
+          btn.classList.add("bg-blue-600", "text-white");
+        }
+      });
+      aplicarFiltro("Todos");
+
+      // Agrego listener a cada botón
+      botonesFiltro.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Quito estado "activo" de todos
+          botonesFiltro.forEach((b) => {
+            b.classList.remove("bg-blue-600", "text-white");
+            b.classList.add("bg-gray-800", "text-gray-300");
+          });
+          // Agrego estado "activo" al clickeado
+          btn.classList.add("bg-blue-600", "text-white");
+          btn.classList.remove("bg-gray-800", "text-gray-300");
+          // Leo su categoría
+          const categoria = btn.getAttribute("data-categoria");
+          aplicarFiltro(categoria);
+        });
+      });
+    });
+    
   document.addEventListener("DOMContentLoaded", () => {
     const botonesFiltro = document.querySelectorAll(".filtro-btn");
     const itemsProyecto = document.querySelectorAll(".proyecto-item");
