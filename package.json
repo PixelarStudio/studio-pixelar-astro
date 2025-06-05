@@ -12,7 +12,6 @@
     "@astrojs/markdoc": "^0.15.0",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/react": "^4.3.0",
-    "@astrojs/sitemap": "^3.4.0",
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@tailwindcss/vite": "^4.1.6",
     "@types/react": "^19.1.4",
