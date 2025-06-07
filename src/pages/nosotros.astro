@@ -4,6 +4,10 @@
 import ParticlesBackground from "../components/particles/ParticlesBackground";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TeamMember from "../components/contacto/TeamMember.astro";
+const title = "Nuestra historia | Un servicio para cada necesidad";
+const description = "Conoce mas acerca de Studio Pixelar";
+const canonicalPath = "/";     
+const ogImage = "/social-share.jpg";
 /* const teamMembers = [
     { name: "Ana Martínez", role: "CEO & Fundadora", bio: "Más de 10 años de experiencia en desarrollo web y estrategia digital.", img: "/team/ana.jpg" },
     { name: "Carlos Rodríguez", role: "Director de Tecnología", bio: "Especialista en arquitectura de software y soluciones escalables.", img: "/team/carlos.jpg" },
@@ -11,25 +15,29 @@ import TeamMember from "../components/contacto/TeamMember.astro";
     { name: "David García", role: "Desarrollador Frontend", bio: "Experto en React, Vue y nuevas tecnologías del frontend.", img: "/team/david.jpg" },
 ]; */
 
-import "../styles/global.css"
+import "../styles/global.css";
+import HeroSection from "../components/componentsLayouts/header/HeroSection.astro";
 ---
 
-<BaseLayout title="Nosotros | Nuestra historia">
-    <div class="about-page bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden min-h-screen mt-20">
-    <!-- Hero Section -->
-    <section class="about-hero py-20 px-4 text-center relative overflow-hidden">
-          <ParticlesBackground client:load/>
+<BaseLayout 
+title={title}
+description={description}
+canonicalPath={canonicalPath}
+ogImage={ogImage}
+>
 
-      <div class="absolute inset-0 opacity-5 bg-[url('https://assets.website-files.com/5e51b3b0337309d672efd94c/5e51ccb1d7d69c3a0a3d8683_noise.png')]"></div>
-      <div class="max-w-4xl mx-auto relative">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent">
-            Nuestra historia</h1>
-        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-    Descubrí por qué nuestro trabajo marca la diferencia y cómo nos enfocamos en cada detalle para impulsar tus objetivos.
-        </p>
-      </div>
-    </section>
+    <section class="relative bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden">
 
+  <HeroSection 
+  title="Nuestra historia"
+  subtitle="Descubrí por qué nuestro trabajo marca la diferencia y cómo nos enfocamos en cada detalle para impulsar tus objetivos."
+  />
+  
+<div
+class="about-page bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden min-h-screen"
+>
+
+  <!-- Hero Section -->
     <!-- Our Story -->
     <section class="py-16 px-4">
       <div class="max-w-7xl mx-auto">
@@ -38,55 +46,102 @@ import "../styles/global.css"
             <div>
               <h2 class="text-2xl font-bold text-white mb-4">Nuestra misión</h2>
               <p class="text-gray-300 mb-6">
-Acompañar a emprendedores y organizaciones de todos los tamaños en su camino digital, ofreciendo soluciones prácticas y cercanas que les permitan conectar con su público de forma sencilla y efectiva.
-
-
+                Acompañar a emprendedores y organizaciones de todos los tamaños
+                en su camino digital, ofreciendo soluciones prácticas y cercanas
+                que les permitan conectar con su público de forma sencilla y
+                efectiva.
               </p>
-              
+
               <h2 class="text-2xl font-bold text-white mb-4">Nuestra visión</h2>
               <p class="text-gray-300">
-Ser un aliado de confianza que escucha, propone y se adapta a cada proyecto, acompañando paso a paso el crecimiento de cada iniciativa con responsabilidad y transparencia.
-
-
+                Ser un aliado de confianza que escucha, propone y se adapta a
+                cada proyecto, acompañando paso a paso el crecimiento de cada
+                iniciativa con responsabilidad y transparencia.
               </p>
             </div>
-            
+
             <div>
-              <h2 class="text-2xl font-bold text-white mb-4">Nuestros valores</h2>
+              <h2 class="text-2xl font-bold text-white mb-4">
+                Nuestros valores
+              </h2>
               <ul class="space-y-4">
                 <li class="flex items-start gap-3">
-                  <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  <div
+                    class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-1"
+                  >
+                    <svg
+                      class="w-4 h-4 text-blue-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
                   <div>
                     <h3 class="text-lg font-bold text-white">Cercanía</h3>
-                    <p class="text-gray-300">Escuchamos tu historia y buscamos soluciones ajustadas a tus necesidades, sin tecnicismos innecesarios.</p>
+                    <p class="text-gray-300">
+                      Escuchamos tu historia y buscamos soluciones ajustadas a
+                      tus necesidades, sin tecnicismos innecesarios.
+                    </p>
                   </div>
                 </li>
-                
+
                 <li class="flex items-start gap-3">
-                  <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  <div
+                    class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-1"
+                  >
+                    <svg
+                      class="w-4 h-4 text-blue-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="text-lg font-bold text-white">Responsabilidad</h3>
-                    <p class="text-gray-300">Cumplimos lo acordado, cuidando cada detalle y siendo honestos sobre plazos y alcances.</p>
+                    <h3 class="text-lg font-bold text-white">
+                      Responsabilidad
+                    </h3>
+                    <p class="text-gray-300">
+                      Cumplimos lo acordado, cuidando cada detalle y siendo
+                      honestos sobre plazos y alcances.
+                    </p>
                   </div>
                 </li>
-                
+
                 <li class="flex items-start gap-3">
-                  <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  <div
+                    class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-1"
+                  >
+                    <svg
+                      class="w-4 h-4 text-blue-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
                   <div>
                     <h3 class="text-lg font-bold text-white">Transparencia</h3>
-                    <p class="text-gray-300">Compartimos avances y obstáculos de forma clara, para que siempre sepas en qué punto vamos.</p>
+                    <p class="text-gray-300">
+                      Compartimos avances y obstáculos de forma clara, para que
+                      siempre sepas en qué punto vamos.
+                    </p>
                   </div>
                 </li>
               </ul>
@@ -95,61 +150,83 @@ Ser un aliado de confianza que escucha, propone y se adapta a cada proyecto, aco
         </div>
       </div>
     </section>
-<!-- Timeline -->
-<section class="py-16 px-4">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold text-white mb-12 text-center">Nuestra trayectoria</h2>
-    
-    <div class="relative timeline">
-      <!-- Timeline Item 1 -->
-      <div class="mb-12 md:mb-0 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-          <div class="inline-block bg-blue-500/10 px-4 py-2 rounded-full text-blue-400 font-medium mb-2">2025</div>
-          <h3 class="text-xl font-bold text-white">Fundación de Studio Pixelar</h3>
-          <p class="text-gray-300">
-            Nace Studio Pixelar con la misión de ofrecer soluciones web auténticas para emprendedores y empresas que valoran el diseño profesional.
-          </p>
-        </div>
-        <div class="md:w-1/2 flex justify-center md:justify-start">
-          <div class="w-4 h-4 rounded-full bg-blue-500 z-10"></div>
+    <!-- Timeline -->
+    <section class="py-16 px-4">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-12 text-center">
+          Nuestra trayectoria
+        </h2>
+
+        <div class="relative timeline">
+          <!-- Timeline Item 1 -->
+          <div class="mb-12 md:mb-0 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+              <div
+                class="inline-block bg-blue-500/10 px-4 py-2 rounded-full text-blue-400 font-medium mb-2"
+              >
+                2024
+              </div>
+              <h3 class="text-xl font-bold text-white">
+                Surge Studio Pixelar
+              </h3>
+              <p class="text-gray-300">
+   Desde Buenos Aires, iniciamos desarrollos web a medida para pymes, grandes empresas, emprendedores y profesionales de distintos sectores, con interfaces intuitivas, código optimizado y acompañamiento permanente.
+              </p>
+            </div>
+            <div class="md:w-1/2 flex justify-center md:justify-start">
+              <div class="w-4 h-4 rounded-full bg-blue-500 z-10"></div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 md:pl-12 md:order-2 mb-4 md:mb-0">
+              <div
+                class="inline-block bg-blue-500/10 px-4 py-2 rounded-full text-blue-400 font-medium mb-2"
+              >
+                2025
+              </div>
+              <h3 class="text-xl font-bold text-white">Proyectos Destacados</h3>
+              <p class="text-gray-300">
+                Desarrollamos <strong>RubaTecno</strong>, una tienda online de
+                insumos informáticos, y <strong>SempreAfull</strong>, la
+                plataforma de distribución para EvergreenLife. Con cada
+                proyecto, reforzamos nuestra capacidad de adaptación y calidad.
+              </p>
+            </div>
+            <div class="md:w-1/2 flex justify-center md:justify-end md:order-1">
+              <div class="w-4 h-4 rounded-full bg-blue-500 z-10"></div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="mt-12 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+              <div
+                class="inline-block bg-blue-500/10 px-4 py-2 rounded-full text-blue-400 font-medium mb-2"
+              >
+                Hoy
+              </div>
+              <h3 class="text-xl font-bold text-white">
+                Crecimiento y Nuevos Retos
+              </h3>
+              <p class="text-gray-300">
+                Seguimos sumando experiencias, optimizando procesos y ofreciendo
+                soluciones a medida. Nuestro compromiso es crecer junto a cada
+                cliente y afrontar nuevos desafíos con la misma cercanía del
+                primer día.
+              </p>
+            </div>
+            <div class="md:w-1/2 flex justify-center md:justify-start">
+              <div class="w-4 h-4 rounded-full bg-blue-500 z-10"></div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Timeline Item 2 -->
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 md:pl-12 md:order-2 mb-4 md:mb-0">
-          <div class="inline-block bg-blue-500/10 px-4 py-2 rounded-full text-blue-400 font-medium mb-2">2025</div>
-          <h3 class="text-xl font-bold text-white">Proyectos Destacados</h3>
-          <p class="text-gray-300">
-            Desarrollamos <strong>RubaTecno</strong>, una tienda online de insumos informáticos, y <strong>SempreAfull</strong>, la plataforma de distribución para EvergreenLife. Con cada proyecto, reforzamos nuestra capacidad de adaptación y calidad.
-          </p>
-        </div>
-        <div class="md:w-1/2 flex justify-center md:justify-end md:order-1">
-          <div class="w-4 h-4 rounded-full bg-blue-500 z-10"></div>
-        </div>
-      </div>
-
-      <!-- Timeline Item 3 -->
-      <div class="mt-12 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-          <div class="inline-block bg-blue-500/10 px-4 py-2 rounded-full text-blue-400 font-medium mb-2">Hoy</div>
-          <h3 class="text-xl font-bold text-white">Crecimiento y Nuevos Retos</h3>
-          <p class="text-gray-300">
-            Seguimos sumando experiencias, optimizando procesos y ofreciendo soluciones a medida. Nuestro compromiso es crecer junto a cada cliente y afrontar nuevos desafíos con la misma cercanía del primer día.
-          </p>
-        </div>
-        <div class="md:w-1/2 flex justify-center md:justify-start">
-          <div class="w-4 h-4 rounded-full bg-blue-500 z-10"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
+    </section>
 
     <!-- Team Section -->
-<!--     <section class="py-16 px-4">
+    <!--     <section class="py-16 px-4">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-3xl font-bold text-white mb-4 text-center">Conoce nuestro equipo</h2>
         <p class="text-xl text-gray-300 mb-12 text-center max-w-3xl mx-auto">
@@ -164,42 +241,44 @@ Ser un aliado de confianza que escucha, propone y se adapta a cada proyecto, aco
       </div>
     </section> -->
   </div>
-  
 </BaseLayout>
 
-
 <style is:global>
-    .about-page {
-      --primary: 15, 23, 42;
-      --secondary: 30, 41, 59;
-      --accent: 59, 130, 246;
-      --light: 241, 245, 249;
-    }
-    
-    .about-hero {
-      background: linear-gradient(135deg, rgba(var(--primary), 0.9) 0%, rgba(var(--secondary), 0.9) 100%);
-    }
-    
-    .about-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    
+  .about-page {
+    --primary: 15, 23, 42;
+    --secondary: 30, 41, 59;
+    --accent: 59, 130, 246;
+    --light: 241, 245, 249;
+  }
+
+  .about-hero {
+    background: linear-gradient(
+      135deg,
+      rgba(var(--primary), 0.9) 0%,
+      rgba(var(--secondary), 0.9) 100%
+    );
+  }
+
+  .about-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: rgba(59, 130, 246, 0.3);
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: 768px) {
     .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 2px;
-      background: rgba(59, 130, 246, 0.3);
-      transform: translateX(-50%);
+      left: 20px;
     }
-    
-    @media (max-width: 768px) {
-      .timeline::before {
-        left: 20px;
-      }
-    }
-  </style>
+  }
+</style>

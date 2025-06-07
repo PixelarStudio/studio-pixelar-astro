@@ -1,66 +1,60 @@
 ---
+//Declaramos un texto predeterminado por si no se pasa ningún dato. 
+const {
+  title = "Studio Pixelar | Soluciones Web que Generan Negocios",
+  description = "Desarrollamos webs estratégicas que convierten visitantes en clientes. Diseño web profesional, e-commerce y marketing digital.",
+  canonicalPath= "https://studiopixelar.com",
+  ogImage = "/social-share.jpg"
+} = Astro.props;
+
 import { ClientRouter } from "astro:transitions";
-import "../styles/global.css";
-
-
-// Configuración SEO (personaliza estos valores)
-const pageTitle = "Studio Pixelar | Soluciones Web que Generan Negocios";
-const pageDescription = "Desarrollamos webs estratégicas que convierten visitantes en clientes. Diseño web profesional, e-commerce y marketing digital.";
-const canonicalUrl = "https://studiopixelar.com";
-const ogImage = "/social-share.jpg";
-const GA_MEASUREMENT_ID = "G-XXXXXXXXXX"; // Reemplazar con tu ID real
+import "../../styles/global.css";
 ---
 
 
-  <head>
-    <!-- Metadatos básicos (OBLIGATORIOS) -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO esencial -->
-    <title>{pageTitle}</title>
-    <meta name="description" content={pageDescription} />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={canonicalUrl} />
-    
-    <!-- Open Graph (Redes sociales) -->
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={pageDescription} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content="es_ES" />
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@studiopixelar" />
-    <meta name="twitter:creator" content="@studiopixelar" />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={pageDescription} />
-    <meta name="twitter:image" content={ogImage} />
-    
-    <!-- Favicon (Identidad visual) -->
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Web App Manifest (PWA) -->
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#000000" />
-    
-   
-    <!-- Preconexiones (Optimización de rendimiento) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Fuentes externas -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-    
-    <ClientRouter />
-  </head>
+<!-- SEO esencial -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={canonicalPath} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalPath} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="es_ES" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@studiopixelar" />
+<meta name="twitter:creator" content="@studiopixelar" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#000000" />
+
+<!-- Preconexiones -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Fuentes externas -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- El ClientRouter debe ir dentro de <head> -->
+<ClientRouter />

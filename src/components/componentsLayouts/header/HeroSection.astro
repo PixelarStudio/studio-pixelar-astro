@@ -1,0 +1,31 @@
+---
+// src/components/HeroSection.astro
+import ParticlesBackground from "../../particles/ParticlesBackground";
+
+const {
+  title = "",
+  subtitle = "",
+  bgGradient = "bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800",
+} = Astro.props;
+---
+
+<section
+  class={`relative ${bgGradient} text-white font-sans overflow-x-hidden relative max-w-full mx-auto mt-20 mb-20 text-center`}
+>
+  <ParticlesBackground client:load />
+
+  <div class="relative max-w-7xl mx-auto mt-20 text-center h-60">
+    <h1
+      class="text-4xl  md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent"
+    >
+      {title}
+    </h1>
+    {
+      subtitle && (
+        <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-20 px-4">
+          {subtitle}
+        </p>
+      )
+    }
+  </div>
+</section>

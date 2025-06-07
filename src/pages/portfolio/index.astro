@@ -6,6 +6,7 @@ type ProyectoEntry = CollectionEntry<"portfolio">;
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/global.css";
 import ParticlesBackground from "../../components/particles/ParticlesBackground";
+import HeroSection from "../../components/componentsLayouts/header/HeroSection.astro";
 
 const proyectos: ProyectoEntry[] = await getCollection("portfolio");
 
@@ -20,29 +21,20 @@ const categoriasUnicas = Array.from(
 );
 ---
 <BaseLayout title="Portafolio | Mis Proyectos">
-  <div
-    class="portfolio-page bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden min-h-screen mt-20"
-  >
+ 
+ 
+  <section class="relative bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden">
+    
+    
+    
     <!-- Hero Section -->
-    <section
-      class="portfolio-hero py-20 md:py-28 px-4 text-center relative overflow-hidden"
-    >
-      <ParticlesBackground client:load />
-      <div
-        class="absolute inset-0 opacity-5 bg-[url('https://assets.website-files.com/5e51b3b0337309d672efd94c/5e51ccb1d7d69c3a0a3d8683_noise.png')]"
-      ></div>
-      <div class="max-w-4xl mx-auto relative">
-        <h1
-          class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent"
-        >
-          Nuestro Portafolio
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
-          Descubre los proyectos en los que hemos trabajado, cada uno con su
-          propia historia de desafíos y soluciones innovadoras.
-        </p>
-      </div>
-    </section>
+    <HeroSection 
+    title="Nuestro Portafolio"
+    subtitle="Descubre los proyectos en los que hemos trabajado, cada uno con su propia historia de desafíos y soluciones innovadoras."
+
+    
+    />
+
 
     <!-- Portfolio Grid -->
     <section class="py-16 px-4">
@@ -94,7 +86,10 @@ const categoriasUnicas = Array.from(
       </div>
     </section>
 
-    <!-- CTA Section -->
+   
+  </div>
+  
+   <!-- CTA Section -->
     <section class="portfolio-cta py-20 px-4">
       <div class="max-w-4xl mx-auto text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -125,8 +120,6 @@ const categoriasUnicas = Array.from(
         </a>
       </div>
     </section>
-  </div>
-  
 </BaseLayout>
 
 <style is:global>

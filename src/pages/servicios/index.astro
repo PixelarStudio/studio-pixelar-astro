@@ -2,38 +2,36 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 const planes = await getCollection("planes");
-import ParticlesBackground from "../../components/particles/ParticlesBackground";
-
-interface Props {
-  plan: string,
-  data: string,
-  id: string,
-  
-}
-
+const title = "Servicios | Un servicio para cada necesidad";
+const description = "Soluciones técnicas adaptadas a cada necesidad con transparencia y profesionalismo";
+const canonicalPath = "/";     
+const ogImage = "/social-share.jpg";
 import "../../styles/global.css";
+import HeroSection from "../../components/componentsLayouts/header/HeroSection.astro";
 ---
 
-<BaseLayout title="Servicios | Un servicio para cada necesidad">
-  
-  <section class="relative py-28 px-6 bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden mt-20">
-    <!-- Efecto de fondo decorativo -->
-    <div class="absolute inset-0 pointer-events-none z-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #ffffff05 0, #ffffff05 1px, transparent 1px, transparent 20px);"></div>
+<BaseLayout 
+
+title={title}
+description={description}
+canonicalPath={canonicalPath}
+ogImage={ogImage}
+>
+         
+<!-- Efecto de fondo decorativo -->
+  <section class="relative bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden">
     
-    
-    <div class="relative max-w-7xl mx-auto ">
-      <ParticlesBackground client:load/>
-      <div class="text-center mb-20">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent">
-          Nuestros Servicios
-        </h1>
-        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-          Soluciones técnicas adaptadas a cada necesidad con transparencia y profesionalismo
-        </p>
-      </div>
+<HeroSection 
+title="Nuestros Servicios"
+
+subtitle="Soluciones técnicas adaptadas a cada necesidad con transparencia y profesionalismo"
+
+/>
+      
+      <div class="relative max-w-7xl mx-auto mt-20">
 
       {planes.length > 0 ? (
-        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 h-auto">
+        <div class="grid px-5 gap-8 sm:grid-cols-2 lg:grid-cols-3 h-auto">
           {planes.map((plan) => (
             <article class="group relative p-8 rounded-3xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
               <!-- Efecto de brillo al hover -->
@@ -77,6 +75,7 @@ import "../../styles/global.css";
       )}
     </div>
   </section>
+   </section>
 </BaseLayout>
 
 

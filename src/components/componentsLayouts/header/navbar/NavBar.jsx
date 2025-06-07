@@ -15,7 +15,7 @@ export default function NavBar() {
       const scrollThreshold = 5;
 
       if (Math.abs(scrollDelta) > scrollThreshold) {
-        setIsVisible(scrollDelta < 0 || currentScrollY < 100);
+        setIsVisible(scrollDelta < 30 || currentScrollY < 100);
       }
       setLastScrollY(currentScrollY);
     };
@@ -27,7 +27,7 @@ export default function NavBar() {
   return (
     <>
       <nav
-        className={`fixed w-full z-50 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        className={`fixed w-full z-50 transition-all duration-300 mt-5 ease-[cubic-bezier(0.4,0,0.2,1)] ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -57,6 +57,7 @@ export default function NavBar() {
                     className="relative px-5 py-2.5 text-sm font-medium text-white rounded-lg 
                   group transition-all duration-300 overflow-hidden"
                   >
+                    
                     <span className="relative z-10">{item}</span>
                     <span
                       className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 

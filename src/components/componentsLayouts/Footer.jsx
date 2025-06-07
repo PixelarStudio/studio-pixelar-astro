@@ -133,16 +133,16 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-transparent mt-32 pt-24 md:pt-32 lg:pt-48 pb-12 md:pb-16 lg:pb-24">
+    <footer className="relative overflow-hidden bg-transparent mt-32 pt-24 md:pt-32 lg:pt-48 pb-12 md:pb-16 lg:pb-24 ">
       {/* Canvas de partículas (opacidad baja para no competir con contenido) */}
       <canvas
         ref={canvasReferencia}
-        className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none"
+        className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white "
       />
 
       {/* Sombras/gradientes decorativos (aparecen solo en pantallas grandes) */}
-      <div className="hidden lg:block absolute top-0 left-0 w-full h-48 bg-gradient-to-r from-purple-500/10 to-indigo-600/10 transform -skew-y-12 origin-top" />
-      <div className="hidden lg:block absolute top-1/4 left-1/4 w-36 h-36 rounded-full bg-gradient-to-br from-purple-500/20 to-indigo-600/20 blur-3xl animate-float" />
+      <div className="hidden lg:block absolute top-0 left-0 w-full h-48 bg-gradient-to-r from-gray-800/10 to-indigo-600/10 transform -skew-y-12 origin-top" />
+      <div className="hidden lg:block absolute top-1/4 left-1/4 w-36 h-36 rounded-full bg-gradient-to-br from-gray-500/20 to-indigo-600/20 blur-3xl animate-float" />
       <div className="hidden lg:block absolute top-1/3 right-1/4 w-24 h-24 rotate-45 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 blur-3xl animate-float animation-delay-2000" />
       <div className="hidden lg:block absolute bottom-1/4 left-1/3 w-32 h-32 rounded-full bg-gradient-to-br from-pink-500/20 to-rose-600/20 blur-3xl animate-float animation-delay-4000" />
 

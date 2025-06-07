@@ -103,6 +103,6 @@ La idea principal es contar con una plataforma **responsiva**, **funcional** y d
    - **Hero específico** con mensaje “Nuestro Portafolio” y breve descripción.  
    - **PortfolioGrid.jsx** (Astro Island o JS puro) genera los filtros de categorías:
      - Botones: “Todos”, “Web”, “E-commerce”, “Mobile”, etc., según `project.data.categoria`.
-     - Al hacer clic
+
 
 
