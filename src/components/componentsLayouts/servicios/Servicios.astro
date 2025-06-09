@@ -1,13 +1,13 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
 const planes = await getCollection("planes");
 const title = "Servicios | Un servicio para cada necesidad";
 const description = "Soluciones técnicas adaptadas a cada necesidad con transparencia y profesionalismo";
 const canonicalPath = "/";     
 const ogImage = "/social-share.jpg";
-import "../../styles/global.css";
-import HeroSection from "../../components/componentsLayouts/header/HeroSection.astro";
+import "../../../styles/global.css";
+import HeroSection from "../../../components/componentsLayouts/header/HeroSection.astro";
 
 // Agrupar planes por categoría
 const planesPorCategoria = planes.reduce((acc, plan) => {

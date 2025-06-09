@@ -2,6 +2,7 @@
 title: "Plan Piezas Gráficas & CV PDF"
 subtitle: "Plantillas Canva editables y currículums profesionales listos para imprimir y enviar"
 description: "Diseño y entrega de piezas gráficas personalizadas en Canva junto con currículums en PDF de alta calidad, optimizados para impresión y envío digital."
+category: "Branding & Gráficos"
 price: 65000
 slug: "plan-piezas-graficas-cv"
 secciones: 0

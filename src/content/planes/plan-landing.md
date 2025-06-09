@@ -1,5 +1,5 @@
 ---
-title: "Plan Landing Page de Alto Impacto"
+title: "Plan Landing Page"
 subtitle: "Conversión acelerada para campañas y lanzamientos"
 description: "Landing page profesional optimizada para convertir visitantes en clientes, lista en tiempo récord para tus campañas de marketing."
 category: "Web & E-commerce"
