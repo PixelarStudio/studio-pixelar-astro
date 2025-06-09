@@ -2,6 +2,7 @@
 title: "Plan Presencia Digital Inicial"
 subtitle: "Tu primer sitio web profesional"
 description: "Landing page estratégica para captar clientes y establecer tu presencia online de forma inmediata y profesional."
+category: "Web & E-commerce"
 price: 75000
 slug: "plan-inicial"
 
@@ -45,7 +46,7 @@ integraciones:
   - "Boton de WhatsApp (Chat directo con tu negocio)"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: true
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+mi+sitio+web+inicial+profesional&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-inicial.png"

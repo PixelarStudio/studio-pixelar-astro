@@ -16,7 +16,7 @@ solucion:
 
 tecnologias:
   - "WordPress 6.0+"
-  - "WooCommerce Avanzado"
+  - "WooCommerce"
   - "Elementor Pro"
   - "MercadoPago API"
   - "Correo Argentino API"

@@ -7,6 +7,7 @@ const planes = defineCollection({
     title: z.string(),
     subtitle: z.string().optional(),
     description: z.string(),
+    category: z.string(),
     price: z.number(),
 
     secciones: z.number().optional().default(0),

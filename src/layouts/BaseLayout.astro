@@ -16,8 +16,6 @@ const {
 
 // Configuración global
 const SITE_URL = "https://studiopixelar.com"; // Solo un lugar para cambiar
-const GA_ID = "G-XXXXXXXXXX"; // Tu ID de Google Analytics
-const TWITTER_HANDLE = "@studiopixelar";
 
 // Generamos URL canónica completa
 const canonicalUrl = `${SITE_URL}${canonicalPath}`;
@@ -31,6 +29,7 @@ const canonicalUrl = `${SITE_URL}${canonicalPath}`;
       description={description}
       canonicalUrl={canonicalUrl}
       ogImage={ogImage}
+      transition:animate="slide"
     />
   </head>
   <body
@@ -38,42 +37,12 @@ const canonicalUrl = `${SITE_URL}${canonicalPath}`;
   >
     <NavBar client:load />
 
-    <main class="max-w-full mx-auto px-0 py-0">
-      <slot />
-      <!-- Aquí se inyecta el contenido de cada página -->
-    </main>
+  <main class="max-w-full mx-auto px-0 py-0">
+    <slot />
+    <!-- Aquí se inyecta el contenido de cada página -->
+  </main>
+
 
     <Footer client:load />
   </body>
 </html>
-
-<!-- ---
-import NavBar from "../components/componentsLayouts/header/navbar/NavBar.jsx";
-import { ClientRouter } from "astro:transitions";
-const { title  } = Astro.props;
----
-
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
-    <link rel="icon" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-  </head>
-  <body class="bg-gradient-to-r from-gray-800 via-black to-gray-800 text-white min-h-screen">
-    <ClientRouter />
-    <NavBar client:load />
-
-    <main class="max-w-7xl mx-auto px-4 py-8">
-      <slot />
-    </main>
-
-    <footer class="text-center py-6 text-sm text-gray-300">
-      © 2025 Studio Pixelar. Todos los derechos reservados.
-    </footer>
-   
-  </body>
-</html>
- -->

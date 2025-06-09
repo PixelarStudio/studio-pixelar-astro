@@ -1,16 +1,18 @@
 ---
-title: "Plan Desarrollo Web Corporativo Premium"
+title: "Plan Desarrollo Web Empresarial"
 subtitle: "Sitios institucionales profesionales con funcionalidades estratégicas"
-description: "Desarrollo web personalizado para empresas con enfoque en identidad corporativa y captación de oportunidades."
+description: "Diseño y desarrollo web hecho a medida para potenciar tu imagen corporativa y captar negocios."
+category: "Web & E-commerce"
+
 price: 265000
-slug: "plan-desarrollo-web-personalizado"
+slug: "plan-desarrollo-empresarial"
 
 secciones: 12
 certificadoSSL: true
 correoCorporativo: 5
 
 extras:
-  - "12 secciones personalizables (equipo, servicios, portfolio, contacto)"
+  - "12 secciones personalizables (equipo, servicios, portfolio, contacto, etc..)"
   - "Formularios de contacto profesionales con notificación instantánea"
   - "Blog corporativo con estructura SEO básica"
   - "Integración de WhatsApp Business para comunicación directa"
@@ -46,7 +48,7 @@ integraciones:
   - "Botones para compartir en redes sociales"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: true
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+necesito+un+desarrollo+web+corporativo+profesional&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-desarrollo-personalizado.png"

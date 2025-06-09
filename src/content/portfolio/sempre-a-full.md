@@ -16,7 +16,7 @@ solucion:
 
 tecnologias:
   - "WordPress 6.0+"
-  - "WooCommerce Avanzado"
+  - "WooCommerce"
   - "Elementor Pro"
   - "PayPal "
   - "Google Analytics 4"

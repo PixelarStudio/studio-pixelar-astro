@@ -2,6 +2,8 @@
 title: "Plan Standard"
 subtitle: "Auto-administrable"
 description: "Perfecto para negocios que buscan funcionalidad y diseño profesional."
+category: "Web & E-commerce"
+
 price: 98000
 slug: "plan-standard"
 
@@ -44,7 +46,7 @@ integraciones:
   - "Google Analytics"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: true
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+consultar+por+el+servicio+de+Plan+Standard&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-standard.png"

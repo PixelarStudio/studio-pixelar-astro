@@ -2,6 +2,7 @@
 title: "Plan Branding Visual Esencial"
 subtitle: "Identidad de marca + Recursos gráficos listos para usar"
 description: "Creación completa de branding con herramientas accesibles y entrega de material gráfico para redes sociales y marketing. Ideal para empresas / emprendedores que no tengan identidad visual y deseen tener su propio estilo."
+category: "Branding & Gráficos"
 price: 180000
 slug: "plan-branding-visual"
 
@@ -39,7 +40,7 @@ integraciones:
   - "Plantillas Canva compartidas con acceso premium"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: true
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+consultar+por+el+servicio+de+Plan+Branding+Visual+Esencial&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-branding.png"

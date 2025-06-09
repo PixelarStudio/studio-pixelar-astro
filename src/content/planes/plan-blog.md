@@ -2,6 +2,8 @@
 title: "Plan Blog Profesional"
 subtitle: "Optimizado para blogs de alto impacto"
 description: "Diseño personalizado que refleja la identidad de tu empresa con herramientas avanzadas de SEO para maximizar tu alcance."
+category: "Contenido & SEO"
+
 price: 95000
 slug: "plan-blog-profesional"
 
@@ -40,7 +42,7 @@ integraciones:
   - "Sistema de compartir en redes (Facebook, Twitter, LinkedIn, WhatsApp)"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: true
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+consultar+por+el+servicio+de+Plan+Blog+Profesional&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-blog.png"

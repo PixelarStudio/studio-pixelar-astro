@@ -2,6 +2,7 @@
 title: "Plan Empresarial Plus"
 subtitle: "Solución integral para negocios con necesidades digitales avanzadas"
 description: "Desarrollo web premium con funcionalidades estratégicas y soporte extendido para empresas en crecimiento."
+category: "Web & E-commerce"
 price: 299900
 slug: "plan-empresarial-plus"
 
@@ -44,7 +45,7 @@ integraciones:
   - "Redes sociales (enlaces y compartir)"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: true
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+consultar+por+el+Plan+Empresarial+Plus&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-empresarial-plus.png"

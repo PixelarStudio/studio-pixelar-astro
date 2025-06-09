@@ -1,5 +1,7 @@
 ---
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
 import BaseLayout from "../../layouts/BaseLayout.astro";
 const planes = await getCollection("planes");
 const title = "Servicios | Un servicio para cada necesidad";
@@ -8,6 +10,7 @@ const canonicalPath = "/";
 const ogImage = "/social-share.jpg";
 import "../../styles/global.css";
 import HeroSection from "../../components/componentsLayouts/header/HeroSection.astro";
+
 ---
 
 <BaseLayout 
@@ -31,7 +34,7 @@ subtitle="Soluciones técnicas adaptadas a cada necesidad con transparencia y pr
       <div class="relative max-w-7xl mx-auto mt-20">
 
       {planes.length > 0 ? (
-        <div class="grid px-5 gap-8 sm:grid-cols-2 lg:grid-cols-3 h-auto">
+        <div class="grid px-5 gap-8 sm:grid-cols-2 lg:grid-cols-3 h-auto mb-20">
           {planes.map((plan) => (
             <article class="group relative p-8 rounded-3xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
               <!-- Efecto de brillo al hover -->
@@ -45,6 +48,7 @@ subtitle="Soluciones técnicas adaptadas a cada necesidad con transparencia y pr
                   </svg>
                 </div>
                 
+                  <p class="w-auto  text-left text center py-2">{plan.data.category}</p>
                 <h3 class="text-2xl font-bold text-gray-100 mb-4">{plan.data.title}</h3>
                 <p class="text-gray-400 mb-6 leading-relaxed descripcion">{plan.data.description}</p>
                 

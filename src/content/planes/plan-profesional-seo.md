@@ -2,6 +2,7 @@
 title: "Plan Profesional & SEO Local"
 subtitle: "Posicionamiento en Google para Negocios Locales"
 description: "Solución completa WordPress con estrategia SEO local para aparecer en mapas y búsquedas de tu zona. Atraé clientes cerca de ti."
+category: "Contenido & SEO"
 price: 335000
 slug: "plan-profesional-seo"
 
@@ -47,7 +48,7 @@ integraciones:
   - "Alertas de tráfico cercano"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: false
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+posicionar+mi+negocio+local+en+Google&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-seo.png"

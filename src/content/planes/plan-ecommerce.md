@@ -2,6 +2,8 @@
 title: "Plan E-Commerce Profesional"
 subtitle: "Tienda online lista para vender con gestión autoadministrable"
 description: "Solución completa para e-commerce con WordPress/WooCommerce, integraciones avanzadas y diseño optimizado para conversiones. Ideal para vender hasta 50 productos con control total."
+category: "Web & E-commerce"
+
 price: 428500
 slug: "plan-ecommerce"
 
@@ -52,7 +54,7 @@ integraciones:
   - "Sincronización: Google Merchant Center"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: true
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+mi+tienda+online+profesional+con+el+Plan+Ecommerce&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-ecommerce.png"

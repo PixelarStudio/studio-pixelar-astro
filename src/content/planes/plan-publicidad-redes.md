@@ -2,6 +2,7 @@
 title: "Plan Estrategia de Publicidad Digital"
 subtitle: "Campañas pagas que generan ventas reales"
 description: "Gestión profesional de anuncios en redes sociales con enfoque en conversiones y retorno de inversión. Ideal para empresas que buscan resultados medibles."
+category: "Publicidad & Ads"	
 price: 160000
 slug: "plan-publicidad-redes"
 
@@ -48,7 +49,7 @@ integraciones:
   - "Catálogo de productos (para e-commerce)"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: false
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+generar+ventas+con+publicidad+en+redes&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-publicidad-redes.png"

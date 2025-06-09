@@ -2,6 +2,8 @@
 title: "Plan Avanzado"
 subtitle: "Diseño web personalizado y optimizado para destacar tu negocio en el entorno digital."
 description: "Este plan está diseñado para empresas y profesionales que buscan una presencia en línea sólida y diferenciada. Ofrece un sitio web completamente personalizado, desarrollado con tecnologías modernas que garantizan rendimiento, escalabilidad y una experiencia de usuario superior."
+category: "Web & E-commerce"
+
 price: 268500
 slug: "plan-avanzado"
 
@@ -43,7 +45,7 @@ integraciones:
 
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: true
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+consultar+por+el+servicio+de+Plan+Avanzado&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-avanzado.png"

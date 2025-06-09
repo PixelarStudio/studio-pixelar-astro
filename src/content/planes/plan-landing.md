@@ -2,6 +2,8 @@
 title: "Plan Landing Page de Alto Impacto"
 subtitle: "Conversión acelerada para campañas y lanzamientos"
 description: "Landing page profesional optimizada para convertir visitantes en clientes, lista en tiempo récord para tus campañas de marketing."
+category: "Web & E-commerce"
+
 price: 85000
 slug: "plan-landing-page"
 
@@ -43,7 +45,7 @@ integraciones:
   - "Mailchimp (captura de emails)"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: true
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+necesito+una+landing+page+para+mi+campaña&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-landingpage.png"

@@ -2,7 +2,8 @@
 title: "Plan Curriculum Online Premium"
 subtitle: "Tu CV profesional en la web con impacto inmediato"
 description: "Web personal con currículum interactivo, portafolio integrado y contacto directo para captar oportunidades laborales y descarga directa en formato .PDF"
-price: 78500
+category: "Branding & Gráficos"
+price: 68500
 slug: "plan-curriculum-online"
 
 secciones: 4
@@ -10,23 +11,23 @@ certificadoSSL: true
 correoCorporativo: 0
 
 extras:
-  - "Diseño web moderno con secciones interactivas"
+  - "Diseño web moderno con secciones personalizadas"
   - "Portafolio integrado para mostrar proyectos y trabajos destacados"
-  - "Optimización SEO para aparecer en búsquedas de tu nombre + profesión"
   - "Integración completa con LinkedIn y redes profesionales"
-  - "Botón inteligente de WhatsApp para contacto directo con reclutadores"
+  - "Botón de WhatsApp para contacto directo con reclutadores"
   - "Versión descargable en PDF con diseño premium"
   - "Certificado SSL para máxima seguridad de datos"
   - "Opcional: Dominio .com.ar con tu nombre/portfolio"
+  - "Hosting Premium (incluido en el plan por 1 año) "
+
 
 tecnologias:
   - "Astro (rendimiento ultrarrápido)"
   - "TailwindCSS (diseño responsive y estilos)"
   - "JavaScript (interacciones profesionales)"
-  - "GitHub Pages (hosting gratuito y profesional)"
   - "SEO Básico de posicionamiento"
 
-tiempoEntrega: "4 días hábiles"
+tiempoEntrega: "4 a 5 días hábiles segun proyecto"
 publico: "Profesionales en búsqueda activa, freelancers, ejecutivos, recién graduados y personal creativo"
 documentacion: true
 
@@ -42,7 +43,7 @@ integraciones:
   - "Dominio .com.ar Gratis por 1 Año."
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: true
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+destacar+con+mi+Curriculum+Online+Premium&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-cv.png"

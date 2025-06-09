@@ -130,7 +130,7 @@ export default function NavBar() {
         >
           <div className="mx-3 mt-2 rounded-xl bg-gray-900/95 backdrop-blur-xl shadow-xl border border-gray-700/50">
             <div className="px-2 pt-2 pb-3 space-y-2">
-              {["Servicios", "Portfolio", "Nosotros"].map((item) => (
+              {["Servicios", "Portfolio", "Nosotros", "Contacto"].map((item) => (
                 <a
                   key={item}
                   href={`/${item.toLowerCase()}`}

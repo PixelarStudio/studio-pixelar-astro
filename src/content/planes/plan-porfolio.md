@@ -2,6 +2,8 @@
 title: "Plan Portfolio Profesional"
 subtitle: "Portfolio interactivo con diseño elegante y minimalista"
 description: "Diseñamos tu portfolio online con una galería interactiva para mostrar tus proyectos de manera visual, dinámica y profesional. Ideal para creativos que quieren impactar positivamente en sus potenciales clientes."
+category: "Web & E-commerce"
+
 price: 78500
 slug: "plan-portfolio"
 
@@ -45,7 +47,7 @@ integraciones:
   - "Google Analytics: Estadísticas claras sobre el comportamiento de tus visitantes"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: true
 
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+mi+portfolio+profesional&type=phone_number&app_absent=0"

@@ -223,7 +223,7 @@ const Footer = () => {
               <li className="flex items-start">
                 <i className="fas fa-envelope mt-1 mr-3 text-indigo-400 text-base md:text-lg" />
                 <span className="transition-transform duration-200 hover:-translate-y-0.5">
-                  info@studiopixelar.com
+                  info@StudioPixelar.com
                 </span>
               </li>
               <li className="flex items-start">
@@ -247,7 +247,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 md:mb-8">
         <div className="w-full flex flex-col md:flex-row justify-between items-center bg-gray-900/30 backdrop-blur-sm rounded-2xl p-4 md:p-6 space-y-4 md:space-y-0">
           <div className="text-gray-500 text-xs sm:text-sm text-center md:text-left">
-            © {new Date().getFullYear()} Studio Pixelar. Desafiamos lo convencional. Todos los caminos están abiertos.
+            © {new Date().getFullYear()}   Studio Pixelar. Donde tu proyecto cobra vida..
+
           </div>
         </div>
       </div>

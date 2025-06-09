@@ -2,6 +2,7 @@
 title: "Presencia Local Optimizada en Google Search y Maps"
 subtitle: "Solución profesional para visibilidad en buscadores"
 description: "Servicio completo de alta, configuración y optimización para que tu marca aparezca correctamente en los principales servicios de Google. Ideal para negocios locales y profesionales que buscan visibilidad inmediata y datos precisos."
+category: "Contenido & SEO"
 price: 230000
 slug: "plan-google"
 
@@ -36,7 +37,7 @@ integraciones:
   - "Google Search Console"
 
 idioma: "Español"
-factura: true
+factura: false
 disponible: false
 cta: "https://api.whatsapp.com/send/?phone=541124025510&text=Hola%2C+quiero+el+Plan+Presencia+Local+en+Google&type=phone_number&app_absent=0"
 imagen: "/images/planes/plan-altas-google.png"
