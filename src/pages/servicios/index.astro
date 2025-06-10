@@ -8,6 +8,7 @@ const canonicalPath = "/";
 const ogImage = "/social-share.jpg";
 import "../../styles/global.css";
 import HeroSection from "../../components/componentsLayouts/header/HeroSection.astro";
+import FiltroPlanes from "../../components/componentsLayouts/servicios/FiltrosPlanes";
 
 // Agrupar planes por categoría
 const planesPorCategoria = planes.reduce((acc, plan) => {
@@ -19,7 +20,7 @@ const planesPorCategoria = planes.reduce((acc, plan) => {
   return acc;
 }, {});
 
-// Orden de categorías (puedes ajustarlo)
+// Orden de categorías
 const ordenCategorias = ['Web & E-commerce', 'Contenido & SEO', 'Branding & Gráficos', 'Web & SEO Local'];
 ---
 
@@ -29,15 +30,15 @@ const ordenCategorias = ['Web & E-commerce', 'Contenido & SEO', 'Branding & Grá
   canonicalPath={canonicalPath}
   ogImage={ogImage}
 >
-  <section class="relative bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden">
+  <section class="relative bg-gradient-to-tr from-gray-900 via-[#0F0F0F] to-blue-900 text-white font-sans overflow-x-hidden">
+
     <HeroSection 
       title="Nuestros Servicios"
       subtitle="Soluciones técnicas adaptadas a cada necesidad con transparencia y profesionalismo"
     />
-    
-    <div class="relative max-w-7xl mx-auto px-5 mt-12">
-      <!-- Filtros de categoría estilo Bento -->
-      <div class="flex flex-wrap gap-3 mb-12 justify-center sticky top-20 z-10 bg-gray-900/80 backdrop-blur-sm py-4">
+    <FiltroPlanes client:load />
+    <div id="services-container" class="relative max-w-7xl mx-auto px-5 mt-12" style="opacity: 0;">
+      <div class="flex flex-wrap gap-3 mb-12 justify-center sticky rounded-4xl top-20 z-10 bg-gray-900/80 backdrop-blur-sm py-4">
         <button 
           class="filter-btn active px-4 py-2 rounded-full border border-gray-700 bg-gray-800 hover:bg-gray-700 transition-all duration-200 text-sm font-medium"
           data-category="all"
@@ -54,7 +55,6 @@ const ordenCategorias = ['Web & E-commerce', 'Contenido & SEO', 'Branding & Grá
         ))}
       </div>
       
-      <!-- Secciones por categoría -->
       <div class="space-y-20 mb-20">
         {ordenCategorias.map(categoria => {
           const planesCategoria = planesPorCategoria[categoria] || [];
@@ -88,8 +88,9 @@ const ordenCategorias = ['Web & E-commerce', 'Contenido & SEO', 'Branding & Grá
                       <p class="text-gray-400 mb-4 leading-relaxed descripcion flex-grow">{plan.data.description}</p>
                       
                       <div class="flex items-baseline mb-4">
+                         <p class="px-2 ">Desde</p>
                         <span class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent">
-                          ${plan.data.price.toLocaleString("es-AR")}
+                         ${plan.data.price.toLocaleString("es-AR")}
                         </span>
                         {plan.data.frequency && <span class="text-gray-400 ml-2">/{plan.data.frequency}</span>}
                       </div>
@@ -134,37 +135,3 @@ const ordenCategorias = ['Web & E-commerce', 'Contenido & SEO', 'Branding & Grá
     padding-top: 1.5rem;
   }
 </style>
-
-<script is:inline>
-  // Filtrado interactivo
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const categorySections = document.querySelectorAll('.category-section');
-    
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Actualizar botón activo
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        
-        const category = button.dataset.category;
-        
-        if (category === 'all') {
-          // Mostrar todas las categorías
-          categorySections.forEach(section => {
-            section.style.display = 'block';
-          });
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          // Mostrar solo la categoría seleccionada
-          categorySections.forEach(section => {
-            section.style.display = section.id === category ? 'block' : 'none';
-          });
-          
-          // Scroll suave a la sección
-          document.getElementById(category)?.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  });
-</script>

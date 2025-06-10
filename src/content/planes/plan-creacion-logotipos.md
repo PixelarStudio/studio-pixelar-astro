@@ -1,7 +1,7 @@
 ---
 title: "Plan Creación de Logotipos"
 subtitle: "Diseño de logotipos personalizados para tu marca"
-description: "Diseño de logotipos a medida que capturan la esencia de tu identidad, entregados en formatos vectoriales y de alta resolución, listos para web, impresión y redes sociales."
+description: "Logotipos únicos diseñados desde cero, adaptados a tu rubro y listos para usar en web, redes e impresión. Entrega en formatos vectoriales y alta resolución."
 category: "Branding & Gráficos"
 price: 25000
 slug: "plan-creacion-logotipos"
@@ -9,6 +9,7 @@ secciones: 0
 certificadoSSL: false
 correoCorporativo: 0
 extras:
+  - "Partimos desde tu idea, tus ejemplos, tus bocetos, logos anteriores, y armemos juntos tu logo ideal"
   - "Entrega de archivos en PNG, JPG y SVG listos para usar"
   - "Breve guía de uso: colores, tipografía y proporciones"
   - "Soporte inicial para implementar tu logo en redes sociales"

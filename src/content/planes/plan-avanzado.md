@@ -4,7 +4,7 @@ subtitle: "Diseño web personalizado y optimizado para destacar tu negocio en el
 description: "Este plan está diseñado para empresas y profesionales que buscan una presencia en línea sólida y diferenciada. Ofrece un sitio web completamente personalizado, desarrollado con tecnologías modernas que garantizan rendimiento, escalabilidad y una experiencia de usuario superior."
 category: "Web & E-commerce"
 
-price: 268500
+price: 228500
 slug: "plan-avanzado"
 
 secciones: 8

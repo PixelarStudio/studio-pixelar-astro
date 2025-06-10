@@ -4,7 +4,7 @@ subtitle: "Optimizado para blogs de alto impacto"
 description: "Diseño personalizado que refleja la identidad de tu empresa con herramientas avanzadas de SEO para maximizar tu alcance."
 category: "Contenido & SEO"
 
-price: 95000
+price: 85000
 slug: "plan-blog-profesional"
 
 secciones: 5

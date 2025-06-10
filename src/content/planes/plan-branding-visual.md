@@ -3,7 +3,7 @@ title: "Plan Branding Visual Esencial"
 subtitle: "Identidad de marca + Recursos gráficos listos para usar"
 description: "Creación completa de branding con herramientas accesibles y entrega de material gráfico para redes sociales y marketing. Ideal para empresas / emprendedores que no tengan identidad visual y deseen tener su propio estilo."
 category: "Branding & Gráficos"
-price: 180000
+price: 79999
 slug: "plan-branding-visual"
 
 secciones: 0

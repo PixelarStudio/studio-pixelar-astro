@@ -3,7 +3,7 @@ title: "Plan Empresarial Plus"
 subtitle: "Solución integral para negocios con necesidades digitales avanzadas"
 description: "Desarrollo web premium con funcionalidades estratégicas y soporte extendido para empresas en crecimiento."
 category: "Web & E-commerce"
-price: 299900
+price: 250000
 slug: "plan-empresarial-plus"
 
 secciones: 8

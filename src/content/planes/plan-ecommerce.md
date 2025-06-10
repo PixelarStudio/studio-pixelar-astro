@@ -34,7 +34,7 @@ tecnologias:
   - "Redis/Object Cache (optimización velocidad)"
   - "SEO Premium (Rank Math Pro/Yoast Premium)"
 
-tiempoEntrega: "15 días hábiles"
+tiempoEntrega: "A coordinar según proyecto"
 publico: "Emprendedores, comercios locales, pymes y marcas que buscan vender online 24/7"
 documentacion: true
 

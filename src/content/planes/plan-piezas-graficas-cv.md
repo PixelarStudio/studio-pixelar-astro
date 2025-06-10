@@ -9,11 +9,12 @@ secciones: 0
 certificadoSSL: false
 correoCorporativo: 0
 extras:
-  - "5 plantillas gráficas editables en Canva (posts, historias, flyers)"
-  - "2 diseños de CV en PDF listos para imprimir y enviar"
-  - "Guía de uso: cómo personalizar tus plantillas en Canva"
-  - "Exportación en alta resolución (300 dpi) para impresión profesional"
-  - "Formato apto para redes sociales y envío por email"
+  - "3 piezas gráficas editables en Canva (post, historia, flyer u otro formato a elección)"
+  - "1 diseño de currículum en PDF con formato profesional, listo para imprimir y enviar"
+  - "Guía de uso para editar tus piezas en Canva sin experiencia previa"
+  - "Exportación final en alta resolución (300 dpi) para impresión profesional"
+  - "Versión adaptada para compartir por WhatsApp, email o plataformas de empleo"
+  - "QR personalizado para un contacto directo con tu WhatsApp"
 
 tecnologias:
   - "Canva Pro (plantillas colaborativas y editables)"
