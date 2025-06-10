@@ -5,7 +5,6 @@ import type { CollectionEntry } from "astro:content";
 type ProyectoEntry = CollectionEntry<"portfolio">;
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/global.css";
-import ParticlesBackground from "../../components/particles/ParticlesBackground";
 import HeroSection from "../../components/componentsLayouts/header/HeroSection.astro";
 
 const proyectos: ProyectoEntry[] = await getCollection("portfolio");
@@ -24,7 +23,6 @@ const categoriasUnicas = Array.from(
  
  
   <section class="relative bg-gradient-to-br from-gray-900 via-[#0F0F0F] to-gray-800 text-white font-sans overflow-x-hidden">
-    
     
     
     <!-- Hero Section -->
@@ -120,6 +118,49 @@ const categoriasUnicas = Array.from(
         </a>
       </div>
     </section>
+    <script type="module">
+  const botonesFiltro = document.querySelectorAll(".filtro-btn");
+  const itemsProyecto = document.querySelectorAll(".proyecto-item");
+
+  function aplicarFiltro(categoriaSeleccionada) {
+    itemsProyecto.forEach((item) => {
+      const catItem = item.getAttribute("data-categoria");
+      if (
+        categoriaSeleccionada === "Todos" ||
+        catItem === categoriaSeleccionada
+      ) {
+        item.style.display = "";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  }
+
+  botonesFiltro.forEach((btn) => {
+    if (btn.getAttribute("data-categoria") === "Todos") {
+      btn.classList.add("bg-blue-600", "text-white");
+    } else {
+      btn.classList.add("bg-gray-800", "text-gray-300");
+    }
+  });
+
+  aplicarFiltro("Todos");
+
+  botonesFiltro.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      botonesFiltro.forEach((b) => {
+        b.classList.remove("bg-blue-600", "text-white");
+        b.classList.add("bg-gray-800", "text-gray-300");
+      });
+
+      btn.classList.add("bg-blue-600", "text-white");
+      btn.classList.remove("bg-gray-800", "text-gray-300");
+
+      const categoria = btn.getAttribute("data-categoria");
+      aplicarFiltro(categoria);
+    });
+  });
+</script>
 </BaseLayout>
 
 <style is:global>
@@ -169,96 +210,3 @@ const categoriasUnicas = Array.from(
   }
 </style>
 
-
-  <!-- Script de filtrado -->
-  <script is:inline type="module">
-     // Esperar a que cargue el DOM
-    document.addEventListener("DOMContentLoaded", () => {
-      // Selecciono todos los botones de filtro
-      const botonesFiltro = document.querySelectorAll(".filtro-btn");
-      // Selecciono cada contenedor de proyecto
-      const itemsProyecto = document.querySelectorAll(".proyecto-item");
-
-      // Función que aplica el filtro según categoría
-      function aplicarFiltro(categoriaSeleccionada) {
-        itemsProyecto.forEach((item) => {
-          const catItem = item.getAttribute("data-categoria");
-          // Si "Todos" o coincide la categoría, muestro; si no, oculto
-          if (
-            categoriaSeleccionada === "Todos" ||
-            catItem === categoriaSeleccionada
-          ) {
-            item.style.display = ""; // vuelve al display por defecto del grid
-          } else {
-            item.style.display = "none"; // oculta el elemento
-          }
-        });
-      }
-
-      // Por defecto, activo el botón "Todos" y muestro todo
-      botonesFiltro.forEach((btn) => {
-        if (btn.getAttribute("data-categoria") === "Todos") {
-          btn.classList.add("bg-blue-600", "text-white");
-        }
-      });
-      aplicarFiltro("Todos");
-
-      // Agrego listener a cada botón
-      botonesFiltro.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          // Quito estado "activo" de todos
-          botonesFiltro.forEach((b) => {
-            b.classList.remove("bg-blue-600", "text-white");
-            b.classList.add("bg-gray-800", "text-gray-300");
-          });
-          // Agrego estado "activo" al clickeado
-          btn.classList.add("bg-blue-600", "text-white");
-          btn.classList.remove("bg-gray-800", "text-gray-300");
-          // Leo su categoría
-          const categoria = btn.getAttribute("data-categoria");
-          aplicarFiltro(categoria);
-        });
-      });
-    });
-    
-  document.addEventListener("DOMContentLoaded", () => {
-    const botonesFiltro = document.querySelectorAll(".filtro-btn");
-    const itemsProyecto = document.querySelectorAll(".proyecto-item");
-
-    function aplicarFiltro(categoriaSeleccionada) {
-      itemsProyecto.forEach((item) => {
-        const catItem = item.getAttribute("data-categoria");
-        if (
-          categoriaSeleccionada === "Todos" ||
-          catItem === categoriaSeleccionada
-        ) {
-          item.style.display = "";
-        } else {
-          item.style.display = "none";
-        }
-      });
-    }
-
-    // Activo "Todos" por defecto
-    botonesFiltro.forEach((btn) => {
-      if (btn.getAttribute("data-categoria") === "Todos") {
-        btn.classList.add("bg-blue-600", "text-white");
-      }
-    });
-    aplicarFiltro("Todos");
-
-    // Cada vez que se clickea un botón, cambio estilos y re-aplico filtro
-    botonesFiltro.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        botonesFiltro.forEach((b) => {
-          b.classList.remove("bg-blue-600", "text-white");
-          b.classList.add("bg-gray-800", "text-gray-300");
-        });
-        btn.classList.add("bg-blue-600", "text-white");
-        btn.classList.remove("bg-gray-800", "text-gray-300");
-        const categoria = btn.getAttribute("data-categoria");
-        aplicarFiltro(categoria);
-      });
-    });
-  });
-</script>
