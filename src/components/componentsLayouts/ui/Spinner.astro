@@ -1,0 +1,15 @@
+---
+const { size = "h-12 w-12", color = "border-blue-500" } = Astro.props;
+---
+
+<div class={`animate-spin rounded-full ${size} border-t-2 border-b-2 ${color}`}></div>
+
+<style>
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>
